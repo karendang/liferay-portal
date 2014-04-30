@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -49,7 +49,9 @@ page import="com.liferay.portlet.journal.FeedNameException" %><%@
 page import="com.liferay.portlet.journal.FeedTargetLayoutFriendlyUrlException" %><%@
 page import="com.liferay.portlet.journal.FeedTargetPortletIdException" %><%@
 page import="com.liferay.portlet.journal.FolderNameException" %><%@
+page import="com.liferay.portlet.journal.InvalidDDMStructureException" %><%@
 page import="com.liferay.portlet.journal.NoSuchFolderException" %><%@
+page import="com.liferay.portlet.journal.asset.JournalArticleAssetRenderer" %><%@
 page import="com.liferay.portlet.journal.model.JournalArticleResource" %><%@
 page import="com.liferay.portlet.journal.model.JournalFeed" %><%@
 page import="com.liferay.portlet.journal.model.JournalFeedConstants" %><%@

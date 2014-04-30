@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -39,6 +39,7 @@ import com.liferay.portlet.documentlibrary.model.DLFileEntry;
 import com.liferay.portlet.documentlibrary.model.DLFileEntryConstants;
 import com.liferay.portlet.documentlibrary.service.permission.DLFileEntryPermission;
 import com.liferay.portlet.documentlibrary.util.DLUtil;
+import com.liferay.portlet.documentlibrary.util.DocumentConversionUtil;
 import com.liferay.portlet.trash.util.TrashUtil;
 
 import java.util.Date;
@@ -147,6 +148,11 @@ public class DLFileEntryAssetRenderer
 		PortletRequest portletRequest, PortletResponse portletResponse) {
 
 		return _fileEntry.getDescription();
+	}
+
+	@Override
+	public String[] getSupportedConversions() {
+		return DocumentConversionUtil.getConversions(_fileEntry.getExtension());
 	}
 
 	@Override

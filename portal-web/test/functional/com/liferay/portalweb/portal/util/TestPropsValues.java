@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -55,6 +55,15 @@ public class TestPropsValues extends com.liferay.portal.util.TestPropsValues {
 
 	public static final String LIFERAY_PORTAL_BUNDLE = TestPropsUtil.get(
 		"liferay.portal.bundle");
+
+	public static final boolean MOBILE_DEVICE_ENABLED = GetterUtil.getBoolean(
+		TestPropsUtil.get("mobile.device.enabled"));
+
+	public static final String MOBILE_DEVICE_RESOLUTION = TestPropsUtil.get(
+		"mobile.device.resolution");
+
+	public static final String MOBILE_DEVICE_USER_AGENT = TestPropsUtil.get(
+		"mobile.device.user.agent");
 
 	public static final String OUTPUT_DIR_NAME = TestPropsUtil.get(
 		"output.dir");

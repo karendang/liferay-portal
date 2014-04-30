@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -241,7 +241,7 @@ else {
 </c:if>
 
 <aui:script use="liferay-dockbar-add-page">
-	new Liferay.Dockbar.AddPage(
+	var addPage = new Liferay.Dockbar.AddPage(
 		{
 			createPageMessage: '<liferay-ui:message key="loading" />',
 			focusItem: A.one('#<portlet:namespace />addLayoutName'),
@@ -254,4 +254,6 @@ else {
 			toggleOnCancel: <%= portletName.equals(PortletKeys.DOCKBAR) %>
 		}
 	);
+
+	Liferay.component('<portlet:namespace />addPage', addPage);
 </aui:script>

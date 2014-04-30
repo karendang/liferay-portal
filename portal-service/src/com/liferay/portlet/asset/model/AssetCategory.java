@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -40,6 +40,16 @@ public interface AssetCategory extends AssetCategoryModel, PersistedModel {
 			public String get(AssetCategory assetCategory) {
 				return assetCategory.getUuid();
 			}
+
+			@Override
+			public Class<String> getAttributeClass() {
+				return String.class;
+			}
+
+			@Override
+			public Class<AssetCategory> getTypeClass() {
+				return AssetCategory.class;
+			}
 		};
 
 	public static final Accessor<AssetCategory, Long> CATEGORY_ID_ACCESSOR = new Accessor<AssetCategory, Long>() {
@@ -47,12 +57,32 @@ public interface AssetCategory extends AssetCategoryModel, PersistedModel {
 			public Long get(AssetCategory assetCategory) {
 				return assetCategory.getCategoryId();
 			}
+
+			@Override
+			public Class<Long> getAttributeClass() {
+				return Long.class;
+			}
+
+			@Override
+			public Class<AssetCategory> getTypeClass() {
+				return AssetCategory.class;
+			}
 		};
 
 	public static final Accessor<AssetCategory, String> NAME_ACCESSOR = new Accessor<AssetCategory, String>() {
 			@Override
 			public String get(AssetCategory assetCategory) {
 				return assetCategory.getName();
+			}
+
+			@Override
+			public Class<String> getAttributeClass() {
+				return String.class;
+			}
+
+			@Override
+			public Class<AssetCategory> getTypeClass() {
+				return AssetCategory.class;
 			}
 		};
 

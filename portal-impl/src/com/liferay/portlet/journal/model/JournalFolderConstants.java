@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -20,5 +20,11 @@ package com.liferay.portlet.journal.model;
 public class JournalFolderConstants {
 
 	public static final long DEFAULT_PARENT_FOLDER_ID = 0;
+
+	public static final int RESTRICTION_TYPE_DDM_STRUCTURES_AND_WORKFLOW = 1;
+
+	public static final int RESTRICTION_TYPE_INHERIT = 0;
+
+	public static final int RESTRICTION_TYPE_WORKFLOW = 2;
 
 }

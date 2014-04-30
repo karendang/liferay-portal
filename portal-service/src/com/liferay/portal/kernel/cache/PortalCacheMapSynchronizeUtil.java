@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -31,7 +31,7 @@ public class PortalCacheMapSynchronizeUtil {
 			new SynchronizeCacheListener<K, V>(map, synchronizer));
 	}
 
-	public static interface Synchronizer<K extends Serializable, V> {
+	public interface Synchronizer<K extends Serializable, V> {
 
 		public void onSynchronize(
 			Map<? extends K, ? extends V> map, K key, V value);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -13,6 +13,9 @@
  */
 
 package com.liferay.portal.kernel.trash;
+
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
 
 import java.util.Locale;
 
@@ -29,6 +32,8 @@ public interface TrashRenderer {
 	public String getClassName();
 
 	public long getClassPK();
+
+	public String getIconCssClass() throws PortalException, SystemException;
 
 	public String getIconPath(PortletRequest portletRequest);
 

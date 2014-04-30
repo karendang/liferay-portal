@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -15,7 +15,6 @@
 package com.liferay.portlet.asset.lar;
 
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
-import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.lar.BasePortletDataHandler;
 import com.liferay.portal.kernel.lar.PortletDataContext;
@@ -25,9 +24,8 @@ import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.xml.Element;
 import com.liferay.portlet.asset.model.AssetCategory;
 import com.liferay.portlet.asset.model.AssetVocabulary;
+import com.liferay.portlet.asset.service.AssetCategoryLocalServiceUtil;
 import com.liferay.portlet.asset.service.AssetVocabularyLocalServiceUtil;
-import com.liferay.portlet.asset.service.persistence.AssetCategoryExportActionableDynamicQuery;
-import com.liferay.portlet.asset.service.persistence.AssetVocabularyExportActionableDynamicQuery;
 
 import java.util.List;
 
@@ -157,34 +155,30 @@ public class AssetCategoryPortletDataHandler extends BasePortletDataHandler {
 			final PortletDataContext portletDataContext)
 		throws SystemException {
 
-		return new AssetCategoryExportActionableDynamicQuery(
-			portletDataContext) {
+		ActionableDynamicQuery actionableDynamicQuery =
+			AssetCategoryLocalServiceUtil.getExportActionableDynamicQuery(
+				portletDataContext);
 
-			@Override
-			protected void addCriteria(DynamicQuery dynamicQuery) {
+		// Override date range criteria
 
-				// Override date range criteria
+		actionableDynamicQuery.setAddCriteriaMethod(null);
 
-			}
-
-		};
+		return actionableDynamicQuery;
 	}
 
 	protected ActionableDynamicQuery getVocabularyActionableDynamicQuery(
 			final PortletDataContext portletDataContext)
 		throws SystemException {
 
-		return new AssetVocabularyExportActionableDynamicQuery(
-			portletDataContext) {
+		ActionableDynamicQuery actionableDynamicQuery =
+			AssetVocabularyLocalServiceUtil.getExportActionableDynamicQuery(
+				portletDataContext);
 
-			@Override
-			protected void addCriteria(DynamicQuery dynamicQuery) {
+		// Override date range criteria
 
-				// Override date range criteria
+		actionableDynamicQuery.setAddCriteriaMethod(null);
 
-			}
-
-		};
+		return actionableDynamicQuery;
 	}
 
 }

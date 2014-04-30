@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -43,6 +43,12 @@ public class BlogsSettings extends BaseServiceSettings {
 		return typedSettings.getLocalizedValuesMap("emailEntryAddedBody");
 	}
 
+	public String getEmailEntryAddedBodyXml() {
+		LocalizedValuesMap emailEntryAddedBodyMap = getEmailEntryAddedBody();
+
+		return emailEntryAddedBodyMap.getLocalizationXml();
+	}
+
 	public boolean getEmailEntryAddedEnabled() {
 		return typedSettings.getBooleanValue("emailEntryAddedEnabled");
 	}
@@ -51,8 +57,22 @@ public class BlogsSettings extends BaseServiceSettings {
 		return typedSettings.getLocalizedValuesMap("emailEntryAddedSubject");
 	}
 
+	public String getEmailEntryAddedSubjectXml() {
+		LocalizedValuesMap emailEntryAddedSubjectMap =
+			getEmailEntryAddedSubject();
+
+		return emailEntryAddedSubjectMap.getLocalizationXml();
+	}
+
 	public LocalizedValuesMap getEmailEntryUpdatedBody() {
 		return typedSettings.getLocalizedValuesMap("emailEntryUpdatedBody");
+	}
+
+	public String getEmailEntryUpdatedBodyXml() {
+		LocalizedValuesMap emailEntryUpdatedBodyMap =
+			getEmailEntryUpdatedBody();
+
+		return emailEntryUpdatedBodyMap.getLocalizationXml();
 	}
 
 	public boolean getEmailEntryUpdatedEnabled() {
@@ -61,6 +81,13 @@ public class BlogsSettings extends BaseServiceSettings {
 
 	public LocalizedValuesMap getEmailEntryUpdatedSubject() {
 		return typedSettings.getLocalizedValuesMap("emailEntryUpdatedSubject");
+	}
+
+	public String getEmailEntryUpdatedSubjectXml() {
+		LocalizedValuesMap emailEntryUpdatedSubjectMap =
+			getEmailEntryUpdatedSubject();
+
+		return emailEntryUpdatedSubjectMap.getLocalizationXml();
 	}
 
 	public String getEmailFromAddress() {
@@ -123,8 +150,8 @@ public class BlogsSettings extends BaseServiceSettings {
 		return typedSettings.getValue("socialBookmarksDisplayPosition");
 	}
 
-	public String[] getSocialBookmarksDisplayStyles() {
-		return typedSettings.getValues("socialBookmarksDisplayStyle");
+	public String getSocialBookmarksDisplayStyle() {
+		return typedSettings.getValue("socialBookmarksDisplayStyle");
 	}
 
 	public String getSocialBookmarksTypes() {
@@ -142,6 +169,7 @@ public class BlogsSettings extends BaseServiceSettings {
 		_fallbackKeys.add("enableRatings", PropsKeys.BLOGS_RATINGS_ENABLED);
 		_fallbackKeys.add(
 			"enableRelatedAssets", PropsKeys.BLOGS_RELATED_ASSETS_ENABLED);
+		_fallbackKeys.add("enableRss", PropsKeys.BLOGS_RSS_ENABLED);
 		_fallbackKeys.add(
 			"enableSocialBookmarks", PropsKeys.BLOGS_SOCIAL_BOOKMARKS_ENABLED);
 		_fallbackKeys.add("displayStyle", PropsKeys.BLOGS_DISPLAY_STYLE);
@@ -179,7 +207,7 @@ public class BlogsSettings extends BaseServiceSettings {
 			PropsKeys.BLOGS_SOCIAL_BOOKMARKS_DISPLAY_POSITION);
 		_fallbackKeys.add(
 			"socialBookmarksDisplayStyle",
-			PropsKeys.SOCIAL_BOOKMARK_DISPLAY_STYLES);
+			PropsKeys.BLOGS_SOCIAL_BOOKMARKS_DISPLAY_STYLE);
 		_fallbackKeys.add(
 			"socialBookmarksTypes", PropsKeys.SOCIAL_BOOKMARK_TYPES);
 	}

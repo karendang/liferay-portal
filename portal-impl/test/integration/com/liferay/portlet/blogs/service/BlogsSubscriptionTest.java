@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -127,19 +127,19 @@ public class BlogsSubscriptionTest extends BaseSubscriptionTestCase {
 		Settings settings = SettingsFactoryUtil.getGroupServiceSettings(
 			group.getGroupId(), BlogsConstants.SERVICE_NAME);
 
-		String germanSubscriptionBodyPreferenceKey =
+		String germanSubscriptionBodyPreferencesKey =
 			LocalizationUtil.getPreferencesKey(
 				getSubscriptionBodyPreferenceName(),
 				LocaleUtil.toLanguageId(LocaleUtil.GERMANY));
 
-		settings.setValue(germanSubscriptionBodyPreferenceKey, GERMAN_BODY);
+		settings.setValue(germanSubscriptionBodyPreferencesKey, GERMAN_BODY);
 
-		String spanishSubscriptionBodyPreferenceKey =
+		String spanishSubscriptionBodyPreferencesKey =
 			LocalizationUtil.getPreferencesKey(
 				getSubscriptionBodyPreferenceName(),
 				LocaleUtil.toLanguageId(LocaleUtil.SPAIN));
 
-		settings.setValue(spanishSubscriptionBodyPreferenceKey, SPANISH_BODY);
+		settings.setValue(spanishSubscriptionBodyPreferencesKey, SPANISH_BODY);
 
 		settings.store();
 	}

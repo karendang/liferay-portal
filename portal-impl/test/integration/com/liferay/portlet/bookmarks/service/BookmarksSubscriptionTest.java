@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -15,8 +15,12 @@
 package com.liferay.portlet.bookmarks.service;
 
 import com.liferay.portal.kernel.test.ExecutionTestListeners;
+import com.liferay.portal.kernel.util.LocaleUtil;
+import com.liferay.portal.kernel.util.LocalizationUtil;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.ServiceTestUtil;
+import com.liferay.portal.settings.Settings;
+import com.liferay.portal.settings.SettingsFactoryUtil;
 import com.liferay.portal.test.LiferayIntegrationJUnitTestRunner;
 import com.liferay.portal.test.MainServletExecutionTestListener;
 import com.liferay.portal.test.Sync;
@@ -26,6 +30,7 @@ import com.liferay.portal.util.PortletKeys;
 import com.liferay.portal.util.TestPropsValues;
 import com.liferay.portlet.bookmarks.model.BookmarksEntry;
 import com.liferay.portlet.bookmarks.model.BookmarksFolder;
+import com.liferay.portlet.bookmarks.util.BookmarksConstants;
 import com.liferay.portlet.bookmarks.util.BookmarksTestUtil;
 
 import org.junit.Ignore;
@@ -101,6 +106,30 @@ public class BookmarksSubscriptionTest extends BaseSubscriptionTestCase {
 	@Override
 	protected String getSubscriptionBodyPreferenceName() throws Exception {
 		return "emailEntryAddedBody";
+	}
+
+	@Override
+	protected void setAddBaseModelSubscriptionBodyPreferences()
+		throws Exception {
+
+		Settings settings = SettingsFactoryUtil.getGroupServiceSettings(
+			group.getGroupId(), BookmarksConstants.SERVICE_NAME);
+
+		String germanSubscriptionBodyPreferencesKey =
+			LocalizationUtil.getPreferencesKey(
+				getSubscriptionBodyPreferenceName(),
+				LocaleUtil.toLanguageId(LocaleUtil.GERMANY));
+
+		settings.setValue(germanSubscriptionBodyPreferencesKey, GERMAN_BODY);
+
+		String spanishSubscriptionBodyPreferencesKey =
+			LocalizationUtil.getPreferencesKey(
+				getSubscriptionBodyPreferenceName(),
+				LocaleUtil.toLanguageId(LocaleUtil.SPAIN));
+
+		settings.setValue(spanishSubscriptionBodyPreferencesKey, SPANISH_BODY);
+
+		settings.store();
 	}
 
 	@Override

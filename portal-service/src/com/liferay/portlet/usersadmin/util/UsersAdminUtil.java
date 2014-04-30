@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -258,7 +258,7 @@ public class UsersAdminUtil {
 
 	/**
 	 * @deprecated As of 6.2.0, replaced by {@link
-	 *             #hasUpdateFieldPermission(User, String)}
+	 *             #hasUpdateFieldPermission(User, User, String)}
 	 */
 	@Deprecated
 	public static boolean hasUpdateEmailAddress(
@@ -268,15 +268,28 @@ public class UsersAdminUtil {
 		return getUsersAdmin().hasUpdateEmailAddress(permissionChecker, user);
 	}
 
+	/**
+	 * @deprecated As of 6.2.0, replaced by {@link
+	 *             #hasUpdateFieldPermission(User, User, String)}
+	 */
+	@Deprecated
 	public static boolean hasUpdateFieldPermission(User user, String field)
 		throws PortalException, SystemException {
 
-		return getUsersAdmin().hasUpdateFieldPermission(user, field);
+		return getUsersAdmin().hasUpdateFieldPermission(null, user, field);
+	}
+
+	public static boolean hasUpdateFieldPermission(
+			User updatingUser, User updatedUser, String field)
+		throws PortalException, SystemException {
+
+		return getUsersAdmin().hasUpdateFieldPermission(
+			updatingUser, updatedUser, field);
 	}
 
 	/**
 	 * @deprecated As of 6.2.0, replaced by {@link
-	 *             #hasUpdateFieldPermission(User, String)}
+	 *             #hasUpdateFieldPermission(User, User, String)}
 	 */
 	@Deprecated
 	public static boolean hasUpdateScreenName(

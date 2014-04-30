@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -192,6 +192,10 @@ public class SearchContext implements Serializable {
 		return _includeDiscussions;
 	}
 
+	public boolean isIncludeFolders() {
+		return _includeFolders;
+	}
+
 	public boolean isIncludeLiveGroups() {
 		return _includeLiveGroups;
 	}
@@ -289,6 +293,10 @@ public class SearchContext implements Serializable {
 		_includeDiscussions = includeDiscussions;
 	}
 
+	public void setIncludeFolders(boolean includeFolders) {
+		_includeFolders = includeFolders;
+	}
+
 	public void setIncludeLiveGroups(boolean includeLiveGroups) {
 		_includeLiveGroups = includeLiveGroups;
 	}
@@ -376,6 +384,7 @@ public class SearchContext implements Serializable {
 	private long[] _groupIds;
 	private boolean _includeAttachments;
 	private boolean _includeDiscussions;
+	private boolean _includeFolders = true;
 	private boolean _includeLiveGroups = true;
 	private boolean _includeStagingGroups = true;
 	private String _keywords;

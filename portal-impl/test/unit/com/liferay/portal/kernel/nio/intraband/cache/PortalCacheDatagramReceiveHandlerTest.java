@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -30,6 +30,7 @@ import com.liferay.portal.kernel.nio.intraband.MockRegistrationReference;
 import com.liferay.portal.kernel.nio.intraband.PortalExecutorManagerUtilAdvice;
 import com.liferay.portal.kernel.nio.intraband.SystemDataType;
 import com.liferay.portal.kernel.test.CodeCoverageAssertor;
+import com.liferay.portal.kernel.test.ReflectionTestUtil;
 import com.liferay.portal.kernel.util.ReflectionUtil;
 import com.liferay.portal.test.AdviseWith;
 import com.liferay.portal.test.AspectJMockingNewClassLoaderJUnitTestRunner;
@@ -421,8 +422,9 @@ public class PortalCacheDatagramReceiveHandlerTest {
 
 			int ordinal = newPortalCacheActionTypes.length - 1;
 
-			newPortalCacheActionTypes[ordinal] = ReflectionUtil.newEnumElement(
-				PortalCacheActionType.class, "MOCK_VALUE", ordinal);
+			newPortalCacheActionTypes[ordinal] =
+				ReflectionTestUtil.newEnumElement(
+					PortalCacheActionType.class, "MOCK_VALUE", ordinal);
 
 			return newPortalCacheActionTypes;
 		}

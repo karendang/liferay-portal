@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -432,7 +432,7 @@ public class IconMenuTag extends BaseBodyTagSupport implements BodyTag {
 	private static final String _AUI_PATH = "../aui/";
 
 	private static final int _DEFAULT_MAX_DISPLAY_ITEMS = GetterUtil.getInteger(
-		PropsUtil.get(PropsKeys.ICON_MENU_MAX_DISPLAY_ITEMS));
+		PropsUtil.get(PropsKeys.MENU_MAX_DISPLAY_ITEMS));
 
 	private static final String _END_PAGE = "/html/taglib/ui/icon_menu/end.jsp";
 

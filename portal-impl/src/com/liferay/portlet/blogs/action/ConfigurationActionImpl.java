@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -14,9 +14,10 @@
 
 package com.liferay.portlet.blogs.action;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.portlet.SettingsConfigurationAction;
 import com.liferay.portal.kernel.util.Constants;
-import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.settings.Settings;
@@ -25,46 +26,12 @@ import com.liferay.portlet.blogs.BlogsSettings;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletConfig;
-import javax.portlet.PortletRequest;
 
 /**
  * @author Jorge Ferrer
  * @author Thiago Moreira
  */
 public class ConfigurationActionImpl extends SettingsConfigurationAction {
-
-	@Override
-	public void postProcess(
-		long companyId, PortletRequest portletRequest, Settings settings) {
-
-		BlogsSettings blogsSettings = new BlogsSettings(settings);
-
-		String emailFromAddress = blogsSettings.getEmailFromAddress();
-
-		removeDefaultValue(
-			portletRequest, settings, "emailFromAddress", emailFromAddress);
-
-		String emailFromName = blogsSettings.getEmailFromName();
-
-		removeDefaultValue(
-			portletRequest, settings, "emailFromName", emailFromName);
-
-		String languageId = LocaleUtil.toLanguageId(
-			LocaleUtil.getSiteDefault());
-
-		removeDefaultValue(
-			portletRequest, settings, "emailEntryAddedBody_" + languageId,
-			blogsSettings.getEmailEntryAddedBody());
-		removeDefaultValue(
-			portletRequest, settings, "emailEntryAddedSubject_" + languageId,
-			blogsSettings.getEmailEntryAddedSubject());
-		removeDefaultValue(
-			portletRequest, settings, "emailEntryUpdatedBody_" + languageId,
-			blogsSettings.getEmailEntryUpdatedBody());
-		removeDefaultValue(
-			portletRequest, settings, "emailEntryUpdatedSubject_" + languageId,
-			blogsSettings.getEmailEntryUpdatedSubject());
-	}
 
 	@Override
 	public void processAction(
@@ -75,12 +42,19 @@ public class ConfigurationActionImpl extends SettingsConfigurationAction {
 		String cmd = ParamUtil.getString(actionRequest, Constants.CMD);
 
 		if (Validator.isNotNull(cmd)) {
-			validateEmail(actionRequest, "emailEntryAdded", true);
-			validateEmail(actionRequest, "emailEntryUpdated", true);
+			validateEmail(actionRequest, "emailEntryAdded");
+			validateEmail(actionRequest, "emailEntryUpdated");
 			validateEmailFrom(actionRequest);
 		}
 
 		super.processAction(portletConfig, actionRequest, actionResponse);
+	}
+
+	@Override
+	protected Settings getSettings(ActionRequest actionRequest)
+		throws PortalException, SystemException {
+
+		return new BlogsSettings(super.getSettings(actionRequest));
 	}
 
 }

@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -45,8 +45,19 @@ if (Validator.isNotNull(keywords)) {
 
 <liferay-util:include page="/html/portlet/trash/restore_path.jsp" />
 
-<liferay-ui:error exception="<%= DuplicateEntryException.class %>">
-	<liferay-ui:message key="unable-to-move-this-item-to-the-selected-destination" />
+<liferay-ui:error exception="<%= RestoreEntryException.class %>">
+
+	<%
+	RestoreEntryException ree = (RestoreEntryException)errorException;
+	%>
+
+	<c:if test="<%= ree.getType() == RestoreEntryException.DUPLICATE %>">
+		<liferay-ui:message key="unable-to-move-this-item-to-the-selected-destination" />
+	</c:if>
+
+	<c:if test="<%= ree.getType() == RestoreEntryException.INVALID_CONTAINER %>">
+		<liferay-ui:message key="the-destination-you-selected-is-an-invalid-container.-please-select-a-different-destination" />
+	</c:if>
 </liferay-ui:error>
 
 <liferay-ui:error exception="<%= TrashPermissionException.class %>">
@@ -173,9 +184,10 @@ if (Validator.isNotNull(keywords)) {
 			name="name"
 		>
 			<liferay-ui:icon
+				iconCssClass="<%= trashRenderer.getIconCssClass() %>"
 				label="<%= true %>"
 				message="<%= HtmlUtil.escape(trashRenderer.getTitle(locale)) %>"
-				method="get" src="<%= trashRenderer.getIconPath(renderRequest) %>"
+				method="get"
 				url="<%= viewContentURLString %>"
 			/>
 
@@ -207,10 +219,10 @@ if (Validator.isNotNull(keywords)) {
 
 				<liferay-util:buffer var="rootEntryIcon">
 					<liferay-ui:icon
+						iconCssClass="<%= rootTrashRenderer.getIconCssClass() %>"
 						label="<%= true %>"
 						message="<%= HtmlUtil.escape(rootTrashRenderer.getTitle(locale)) %>"
 						method="get"
-						src="<%= rootTrashRenderer.getIconPath(renderRequest) %>"
 						url="<%= viewRootContentURLString %>"
 					/>
 				</liferay-util:buffer>

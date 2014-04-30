@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -249,7 +249,7 @@ public class DocumentImplTest {
 	protected void checkSearchContext(SearchContext searchContext)
 		throws Exception {
 
-		Hits results = _indexer.search(searchContext);
+		Hits results = _indexer.search(searchContext, Field.ANY);
 
 		for (Document document : results.getDocs()) {
 			String screenName = document.get("screenName");

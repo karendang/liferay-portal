@@ -81,6 +81,14 @@
 		</default>
 	</command>
 
+	<command name="assertNotVisible">
+		<default>
+			<description message="Assert that the ${locator1} is NOT visible." />
+
+			<execute function="AssertNotVisible#assertNotVisible" />
+		</default>
+	</command>
+
 	<command name="assertSelectedLabel">
 		<default>
 			<execute function="AssertSelectedLabel#assertSelectedLabel" />
@@ -250,6 +258,12 @@
 	<command name="mouseDown">
 		<default>
 			<execute function="MouseDown#mouseDown" />
+		</default>
+	</command>
+
+	<command name="mouseMove">
+		<default>
+			<execute function="MouseMove#mouseMove" />
 		</default>
 	</command>
 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -271,13 +271,9 @@ public class LayoutExporter {
 			startDate = null;
 		}
 
-		StopWatch stopWatch = null;
+		StopWatch stopWatch = new StopWatch();
 
-		if (_log.isInfoEnabled()) {
-			stopWatch = new StopWatch();
-
-			stopWatch.start();
-		}
+		stopWatch.start();
 
 		LayoutCache layoutCache = new LayoutCache();
 
@@ -551,13 +547,7 @@ public class LayoutExporter {
 			document, portletDataContext.getManifestSummary());
 
 		if (_log.isInfoEnabled()) {
-			if (stopWatch != null) {
-				_log.info(
-					"Exporting layouts takes " + stopWatch.getTime() + " ms");
-			}
-			else {
-				_log.info("Exporting layouts is finished");
-			}
+			_log.info("Exporting layouts takes " + stopWatch.getTime() + " ms");
 		}
 
 		portletDataContext.addZipEntry(
@@ -704,9 +694,10 @@ public class LayoutExporter {
 	private static Log _log = LogFactoryUtil.getLog(LayoutExporter.class);
 
 	private DeletionSystemEventExporter _deletionSystemEventExporter =
-		new DeletionSystemEventExporter();
-	private PermissionExporter _permissionExporter = new PermissionExporter();
-	private PortletExporter _portletExporter = new PortletExporter();
-	private ThemeExporter _themeExporter = new ThemeExporter();
+		DeletionSystemEventExporter.getInstance();
+	private PermissionExporter _permissionExporter =
+		PermissionExporter.getInstance();
+	private PortletExporter _portletExporter = PortletExporter.getInstance();
+	private ThemeExporter _themeExporter = ThemeExporter.getInstance();
 
 }

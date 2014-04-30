@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -59,8 +59,8 @@ public class LayoutPriorityComparator extends OrderByComparator {
 
 		int priority2 = -1;
 
-		if (layout1 != null) {
-			priority2 = layout1.getPriority();
+		if (layout2 != null) {
+			priority2 = layout2.getPriority();
 		}
 
 		if (priority1 > priority2) {

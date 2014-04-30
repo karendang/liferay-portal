@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -101,11 +101,6 @@ List<Group> inheritedSites = (List<Group>)request.getAttribute("user.inheritedSi
 		url="javascript:;"
 	/>
 
-	<portlet:renderURL var="groupSelectorURL" windowState="<%= LiferayWindowState.POP_UP.toString() %>">
-		<portlet:param name="struts_action" value="/users_admin/select_site" />
-		<portlet:param name="p_u_i_d" value="<%= String.valueOf(selUser.getUserId()) %>" />
-	</portlet:renderURL>
-
 	<aui:script use="liferay-search-container">
 		var Util = Liferay.Util;
 
@@ -121,6 +116,12 @@ List<Group> inheritedSites = (List<Group>)request.getAttribute("user.inheritedSi
 						},
 						id: '<portlet:namespace />selectGroup',
 						title: '<liferay-ui:message arguments="site" key="select-x" />',
+
+						<portlet:renderURL var="groupSelectorURL" windowState="<%= LiferayWindowState.POP_UP.toString() %>">
+							<portlet:param name="struts_action" value="/users_admin/select_site" />
+							<portlet:param name="p_u_i_d" value="<%= String.valueOf(selUser.getUserId()) %>" />
+						</portlet:renderURL>
+
 						uri: '<%= groupSelectorURL.toString() %>'
 					},
 					function(event) {

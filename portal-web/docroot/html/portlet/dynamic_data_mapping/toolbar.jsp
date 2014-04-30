@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -26,12 +26,12 @@ long groupId = ParamUtil.getLong(request, "groupId", scopeGroupId);
 
 <aui:nav-bar>
 	<aui:nav searchContainer="<%= searchContainer %>">
-		<portlet:renderURL var="viewStructuresURL">
-			<portlet:param name="struts_action" value="/dynamic_data_mapping/view" />
-			<portlet:param name="groupId" value="<%= String.valueOf(groupId) %>" />
-		</portlet:renderURL>
-
 		<c:if test="<%= ddmDisplay.isShowAddStructureButton() && DDMPermission.contains(permissionChecker, groupId, ddmDisplay.getResourceName(), ddmDisplay.getAddStructureActionId()) %>">
+			<portlet:renderURL var="viewStructuresURL">
+				<portlet:param name="struts_action" value="/dynamic_data_mapping/view" />
+				<portlet:param name="groupId" value="<%= String.valueOf(groupId) %>" />
+			</portlet:renderURL>
+
 			<portlet:renderURL var="addStructureURL">
 				<portlet:param name="struts_action" value="/dynamic_data_mapping/edit_structure" />
 				<portlet:param name="redirect" value="<%= viewStructuresURL %>" />

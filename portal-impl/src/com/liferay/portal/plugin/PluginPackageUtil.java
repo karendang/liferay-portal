@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -1401,14 +1401,12 @@ public class PluginPackageUtil {
 		}
 
 		protected void setUpdateAvailable() throws Exception {
-			StopWatch stopWatch = null;
+			StopWatch stopWatch = new StopWatch();
+
+			stopWatch.start();
 
 			if (_log.isInfoEnabled()) {
 				_log.info("Checking for available updates");
-
-				stopWatch = new StopWatch();
-
-				stopWatch.start();
 			}
 
 			for (PluginPackage pluginPackage :

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -563,6 +563,16 @@ public class SeleniumBuilderFileUtil {
 			throw new IllegalArgumentException(
 				prefix + "Description '" + string1 +
 					"' must title convention in " + suffix);
+		}
+		else if (errorCode == 3001) {
+			throw new IllegalArgumentException(
+				prefix + "The property '" + string1 +
+					"' has an invalid component name '" + string2 + "' in " +
+						suffix);
+		}
+		else if (errorCode == 3002) {
+			throw new IllegalArgumentException(
+				prefix + "Missing property '" + string1 + "' for " + suffix);
 		}
 		else {
 			throw new IllegalArgumentException(prefix + suffix);
@@ -1696,6 +1706,75 @@ public class SeleniumBuilderFileUtil {
 			}
 			else {
 				throwValidationException(1002, fileName, element, elementName);
+			}
+		}
+
+		elements = getAllChildElements(rootElement, "property");
+
+		for (Element element : elements) {
+			String name = element.attributeValue("name");
+			String value = element.attributeValue("value");
+
+			if (name.equals("testray.component.names")) {
+				List<String> testrayComponentNames = ListUtil.fromArray(
+					StringUtil.split(value));
+
+				for (String testrayComponentName : testrayComponentNames) {
+					if (!_testrayAvailableComponentNames.contains(
+							testrayComponentName)) {
+
+						throwValidationException(
+							3001, fileName, element, name,
+							testrayComponentName);
+					}
+				}
+			}
+			else if (name.equals("testray.main.component.name")) {
+				if (!_testrayAvailableComponentNames.contains(value)) {
+					throwValidationException(
+						3001, fileName, element, name, value);
+				}
+			}
+		}
+
+		elements = rootElement.elements("property");
+
+		boolean rootTestrayMainComponentNameFound = false;
+
+		for (Element element : elements) {
+			String name = element.attributeValue("name");
+
+			if (name.equals("testray.main.component.name")) {
+				rootTestrayMainComponentNameFound = true;
+
+				break;
+			}
+		}
+
+		if (!rootTestrayMainComponentNameFound) {
+			elements = rootElement.elements("command");
+
+			for (Element element : elements) {
+				List<Element> propertyElements = getAllChildElements(
+					element, "property");
+
+				boolean commandTestrayMainComponentNameFound = false;
+
+				for (Element propertyElement : propertyElements) {
+					String propertyName = propertyElement.attributeValue(
+						"name");
+
+					if (propertyName.equals("testray.main.component.name")) {
+						commandTestrayMainComponentNameFound = true;
+
+						break;
+					}
+				}
+
+				if (!commandTestrayMainComponentNameFound) {
+					throwValidationException(
+						3002, fileName, element, "testray.main.component.name");
+				}
 			}
 		}
 	}

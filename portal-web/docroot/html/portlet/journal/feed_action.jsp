@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -24,14 +24,14 @@ JournalFeed feed = (JournalFeed)row.getObject();
 
 <liferay-ui:icon-menu>
 	<c:if test="<%= JournalFeedPermission.contains(permissionChecker, feed, ActionKeys.UPDATE) %>">
-		<portlet:renderURL var="editeFeedURL">
+		<portlet:renderURL var="editFeedURL">
 			<portlet:param name="struts_action" value="/journal/edit_feed" />
 			<portlet:param name="redirect" value="<%= currentURL %>" />
 			<portlet:param name="groupId" value="<%= String.valueOf(feed.getGroupId()) %>" />
 			<portlet:param name="feedId" value="<%= feed.getFeedId() %>" />
 		</portlet:renderURL>
 
-		<liferay-ui:icon image="edit" url="<%= editeFeedURL %>" />
+		<liferay-ui:icon image="edit" url="<%= editFeedURL %>" />
 	</c:if>
 
 	<c:if test="<%= JournalFeedPermission.contains(permissionChecker, feed, ActionKeys.PERMISSIONS) %>">

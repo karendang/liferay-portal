@@ -84,8 +84,6 @@
 	</command>
 
 	<command name="addSOSite">
-		<execute action="SOUserBar#click" locator-key1="DASHBOARD" />
-
 		<if>
 			<condition action="SOUserBar#isElementPresent" locator-key1="GO_TO_ADD_SITE_BUTTON" />
 			<then>
@@ -125,15 +123,36 @@
 		<execute action="SOUserBarAddSite#type" locator-key1="NAME_FIELD" value1="${siteName}" />
 		<execute action="SOUserBarAddSite#type" locator-key1="DESCRIPTION_FIELD" value1="${siteDescription}" />
 		<execute action="SOUserBarAddSite#click" locator-key1="NEXT_BUTTON" />
-		<execute action="SOUserBarAddSite#select" locator-key1="DEFAULT_PAGES_SELECT" value1="Default Social Office Site" />
 
-		<execute action="SOUserBarAddSite#check" locator-key1="HOME_CHECKBOX" />
-		<execute action="SOUserBarAddSite#check" locator-key1="CALENDAR_CHECKBOX" />
-		<execute action="SOUserBarAddSite#check" locator-key1="DOCUMENTS_CHECKBOX" />
-		<execute action="SOUserBarAddSite#check" locator-key1="FORUMS_CHECKBOX" />
-		<execute action="SOUserBarAddSite#check" locator-key1="BLOGS_CHECKBOX" />
-		<execute action="SOUserBarAddSite#check" locator-key1="WIKI_CHECKBOX" />
-		<execute action="SOUserBarAddSite#check" locator-key1="MEMBERS_CHECKBOX" />
+		<if>
+			<isset var="defaultPages" />
+			<then>
+				<execute action="SOUserBarAddSite#select" locator-key1="DEFAULT_PAGES_SELECT" value1="${defaultPages}" />
+
+				<if>
+					<equals arg1="$[defaultPages}" arg2="None" />
+					<then>
+						<execute action="SOUserBarAddSite#assertElementNotPresent" locator-key1="HOME_CHECKBOX" />
+						<execute action="SOUserBarAddSite#assertElementNotPresent" locator-key1="CALENDAR_CHECKBOX" />
+						<execute action="SOUserBarAddSite#assertElementNotPresent" locator-key1="DOCUMENTS_CHECKBOX" />
+						<execute action="SOUserBarAddSite#assertElementNotPresent" locator-key1="FORUMS_CHECKBOX" />
+						<execute action="SOUserBarAddSite#assertElementNotPresent" locator-key1="BLOGS_CHECKBOX" />
+						<execute action="SOUserBarAddSite#assertElementNotPresent" locator-key1="WIKI_CHECKBOX" />
+						<execute action="SOUserBarAddSite#assertElementNotPresent" locator-key1="MEMBERS_CHECKBOX" />
+					</then>
+				</if>
+			</then>
+			<else>
+				<execute action="SOUserBarAddSite#select" locator-key1="DEFAULT_PAGES_SELECT" value1="Default Social Office Site" />
+				<execute action="SOUserBarAddSite#check" locator-key1="HOME_CHECKBOX" />
+				<execute action="SOUserBarAddSite#check" locator-key1="CALENDAR_CHECKBOX" />
+				<execute action="SOUserBarAddSite#check" locator-key1="DOCUMENTS_CHECKBOX" />
+				<execute action="SOUserBarAddSite#check" locator-key1="FORUMS_CHECKBOX" />
+				<execute action="SOUserBarAddSite#check" locator-key1="BLOGS_CHECKBOX" />
+				<execute action="SOUserBarAddSite#check" locator-key1="WIKI_CHECKBOX" />
+				<execute action="SOUserBarAddSite#check" locator-key1="MEMBERS_CHECKBOX" />
+			</else>
+		</if>
 
 		<if>
 			<equals arg1="${siteType}" arg2="Private" />
@@ -204,6 +223,23 @@
 		<execute action="SOUserBar#assertTextEquals" locator-key1="GO_TO_SITE_NAME_LINK" value1="${siteName}" />
 		<execute action="SOUserBar#click" locator-key1="GO_TO_FAVORITE_SITE_ICON" />
 		<execute action="SOUserBar#assertElementPresent" locator-key1="GO_TO_UNFAVORITE_SITE_ICON" />
+	</command>
+
+	<command name="hideEditControls">
+		<if>
+			<condition action="SOUserBar#isElementNotPresent" locator-key1="VISIBLE_PAGE_CONTROLS" />
+			<then>
+				<execute action="SOUserBar#click" locator-key1="TOGGLE_DOCKBAR" />
+			</then>
+		</if>
+
+		<if>
+			<condition action="SOUserBar#isElementNotPresent" locator-key1="EDIT_CONTROLS_NOT_FLAGGED" />
+			<then>
+				<execute action="Dockbar#mouseOver" locator-key1="EDIT_CONTROLS" />
+				<execute action="Dockbar#click" locator-key1="EDIT_CONTROLS" />
+			</then>
+		</if>
 	</command>
 
 	<command name="joinSOSite">
@@ -291,6 +327,23 @@
 		<execute action="SOUserBar#click" locator-key1="GO_TO" />
 		<execute action="SOUserBar#type" locator-key1="GO_TO_SEARCH_FIELD" value1="${siteName}" />
 		<execute action="SOUserBar#assertTextEquals" locator-key1="GO_TO_SITE_NAME_LINK" value1="${siteName}" />
+	</command>
+
+	<command name="showEditControls">
+		<if>
+			<condition action="SOUserBar#isElementNotPresent" locator-key1="VISIBLE_PAGE_CONTROLS" />
+			<then>
+				<execute action="SOUserBar#click" locator-key1="TOGGLE_DOCKBAR" />
+			</then>
+		</if>
+
+		<if>
+			<condition action="SOUserBar#isElementPresent" locator-key1="EDIT_CONTROLS_NOT_FLAGGED" />
+			<then>
+				<execute action="Dockbar#mouseOver" locator-key1="EDIT_CONTROLS" />
+				<execute action="Dockbar#click" locator-key1="EDIT_CONTROLS" />
+			</then>
+		</if>
 	</command>
 
 	<command name="tearDownNotifications">

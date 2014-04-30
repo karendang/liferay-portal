@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -603,12 +603,6 @@ public abstract class DLPreviewableProcessor implements DLProcessor {
 		FileVersion fileVersion = fileEntry.getFileVersion();
 
 		if (!hasThumbnail(fileVersion, index)) {
-			if (_log.isWarnEnabled()) {
-				_log.warn(
-					"No thumbnail found for file entry " +
-						fileEntry.getFileEntryId());
-			}
-
 			return;
 		}
 
@@ -637,7 +631,17 @@ public abstract class DLPreviewableProcessor implements DLProcessor {
 
 		FileVersion fileVersion = fileEntry.getFileVersion();
 
-		if (!isSupported(fileVersion) || !hasThumbnails(fileVersion)) {
+		if (!isSupported(fileVersion)) {
+			return;
+		}
+
+		if (!hasThumbnails(fileVersion)) {
+			if (_log.isWarnEnabled()) {
+				_log.warn(
+					"No thumbnail found for file entry " +
+						fileEntry.getFileEntryId());
+			}
+
 			return;
 		}
 
