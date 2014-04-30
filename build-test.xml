@@ -2157,7 +2157,7 @@ tck.url=true</echo>
 			</then>
 			<elseif>
 				<equals arg1="${test.build.bundle.tcserver}" arg2="true" />
-			<then>
+				<then>
 					<echo file="app.server.${user.name}.properties">app.server.type=tcserver</echo>
 
 					<ant antfile="build-dist.xml" target="unzip-tcserver" inheritAll="false" />
@@ -2165,7 +2165,8 @@ tck.url=true</echo>
 					<antcall target="deploy" inheritAll="false" />
 
 					<delete file="app.server.${user.name}.properties" />
-			</then>
+				</then>
+			</elseif>
 		</if>
 
 		<if>

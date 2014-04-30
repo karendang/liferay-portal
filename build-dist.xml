@@ -1863,6 +1863,8 @@ this task.
 			</then>
 		</if>
 
+		<basename file="${app.server.tcserver.dir}" property="app.server.tcserver.dir.name" />
+
 		<unzip
 			dest="${app.server.parent.dir}"
 			src="${app.server.parent.dir}/${app.server.tcserver.zip.name}"
@@ -1870,7 +1872,7 @@ this task.
 			<mapper
 				type="glob"
 				from="${app.server.tcserver.zip.name}"
-				to="tcserver-${app.server.tcserver.version}/*"
+				to="${app.server.tcserver.dir.name}/*"
 			/>
 		</unzip>
 
@@ -1897,17 +1899,6 @@ this task.
 		<if>
 			<os family="windows" />
 			<then>
-				<replace file="${app.server.tcserver.dir}/liferay/conf/wrapper.conf">
-					<replacetoken><![CDATA[wrapper.java.additional.8="-Xmx512M"]]></replacetoken>
-					<replacevalue><![CDATA[wrapper.java.additional.8="-Xmx1024M"]]></replacevalue>
-				</replace>
-
-				<replace file="${app.server.tcserver.dir}/liferay/conf/wrapper.conf">
-					<replacetoken><![CDATA[wrapper.java.additional.9="-Xss192K"]]></replacetoken>
-					<replacevalue><![CDATA[wrapper.java.additional.9="-Xss512K"
-						wrapper.java.additional.10="-XX:MaxPermSize=256m"]]></replacevalue>
-				</replace>
-
 				<replace file="${app.server.tcserver.bin.dir}/setenv.bat">
 					<replacetoken><![CDATA[set JVM_OPTS=-Xmx512M -Xss192K]]></replacetoken>
 					<replacevalue><![CDATA[set JVM_OPTS=-Xmx1024M -Xss512K -XX:MaxPermSize=512m]]></replacevalue>
@@ -1930,6 +1921,28 @@ this task.
 			<replacetoken><![CDATA[redirectPort="${bio.https.port}"/>]]></replacetoken>
 			<replacevalue><![CDATA[redirectPort="${bio.https.port}" URIEncoding="UTF-8"/>]]></replacevalue>
 		</replace>
+
+		<if>
+			<os family="windows" />
+			<then>
+				<replace file="${app.server.tcserver.dir}/liferay/conf/wrapper.conf">
+					<replacetoken><![CDATA[wrapper.java.additional.8="-Xmx512M"]]></replacetoken>
+					<replacevalue><![CDATA[wrapper.java.additional.8="-Xmx1024M"]]></replacevalue>
+				</replace>
+
+				<replace file="${app.server.tcserver.dir}/liferay/conf/wrapper.conf">
+					<replacetoken><![CDATA[wrapper.java.additional.9="-Xss192K"]]></replacetoken>
+					<replacevalue><![CDATA[wrapper.java.additional.9="-Xss512K"
+						wrapper.java.additional.10="-XX:MaxPermSize=256m"]]></replacevalue>
+				</replace>
+			</then>
+		</if>
+
+		<chmod perm="a+x">
+			<fileset dir="${app.server.tcserver.bin.dir}">
+				<include name="*.sh" />
+			</fileset>
+		</chmod>
 	</target>
 
 	<target name="unzip-tomcat">
