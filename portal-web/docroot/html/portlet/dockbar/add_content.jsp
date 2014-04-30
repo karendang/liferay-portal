@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -36,7 +36,7 @@ String displayStyle = ParamUtil.getString(request, "displayStyle", displayStyleD
 		<div class="btn-toolbar">
 			<aui:input cssClass="search-query" inlineField="<%= true %>" label="" name="searchContent" type="text" />
 
-			<aui:select cssClass="input-mini" inlineField="<%= true %>" label="" name="numItems">
+			<aui:select cssClass="input-mini" inlineField="<%= true %>" label="" name="numItems" title="number-of-items-to-display">
 
 				<%
 				for (int curDelta : PropsValues.SEARCH_CONTAINER_PAGE_DELTA_VALUES) {
@@ -124,6 +124,8 @@ String displayStyle = ParamUtil.getString(request, "displayStyle", displayStyleD
 			);
 		}
 	);
+
+	Liferay.component('<portlet:namespace />addContent', addContent);
 </aui:script>
 
 <%!

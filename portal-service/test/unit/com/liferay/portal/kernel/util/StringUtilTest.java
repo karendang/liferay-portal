@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -171,6 +171,25 @@ public class StringUtilTest {
 			2, StringUtil.lastIndexOfAny("1234", new String[] {""}, 2));
 		Assert.assertEquals(
 			3, StringUtil.lastIndexOfAny("1234", new String[] {""}, 2, 3));
+	}
+
+	@Test
+	public void testMerge() {
+		Assert.assertEquals(
+			"1,2,3", StringUtil.merge(new String[] {"1", " 2 ", "3"}));
+		Assert.assertEquals("1", StringUtil.merge(new String[] {"1"}));
+		Assert.assertEquals("", StringUtil.merge(new String[0]));
+		Assert.assertEquals(
+			"true,false,true",
+			StringUtil.merge(new boolean[] {true, false, true}));
+		Assert.assertEquals("true", StringUtil.merge(new boolean[] {true}));
+		Assert.assertEquals(
+			"1.1,2.2,3.3", StringUtil.merge(new double[] {1.1, 2.2, 3.3}));
+		Assert.assertEquals("1.1", StringUtil.merge(new double[] {1.1}));
+		Assert.assertEquals("1,2,3", StringUtil.merge(new int[] {1, 2, 3}));
+		Assert.assertEquals("1", StringUtil.merge(new int[] {1}));
+		Assert.assertEquals("1,2,3", StringUtil.merge(new long[] {1, 2, 3}));
+		Assert.assertEquals("1", StringUtil.merge(new long[] {1}));
 	}
 
 	@Test

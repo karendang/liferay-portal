@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -32,6 +32,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.internal.WrapsDriver;
 
 /**
@@ -65,7 +67,18 @@ public abstract class BaseWebDriverImpl
 
 		WebDriver.Window window = options.window();
 
-		window.setSize(new Dimension(1065, 1250));
+		int x = 1065;
+		int y = 1250;
+
+		if (TestPropsValues.MOBILE_DEVICE_ENABLED) {
+			String[] screenResolution = StringUtil.split(
+				TestPropsValues.MOBILE_DEVICE_RESOLUTION, "x");
+
+			x = GetterUtil.getInteger(screenResolution[0]);
+			y = GetterUtil.getInteger(screenResolution[1]);
+		}
+
+		window.setSize(new Dimension(x, y));
 
 		webDriver.get(browserURL);
 	}
@@ -581,6 +594,23 @@ public abstract class BaseWebDriverImpl
 		WebElement locatorWebElement = getWebElement(locator);
 
 		javascriptExecutor.executeScript(sb.toString(), locatorWebElement);
+	}
+
+	@Override
+	public void mouseRelease() {
+		WebElement bodyWebElement = getWebElement("//body");
+
+		WrapsDriver wrapsDriver = (WrapsDriver)bodyWebElement;
+
+		WebDriver webDriver = wrapsDriver.getWrappedDriver();
+
+		Actions actions = new Actions(webDriver);
+
+		actions.release();
+
+		Action action = actions.build();
+
+		action.perform();
 	}
 
 	@Override

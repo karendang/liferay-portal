@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -129,9 +129,7 @@ else if (group != null) {
 			<aui:input name="name" type="hidden" />
 		</c:when>
 		<c:when test="<%= (liveGroup != null) && liveGroup.isOrganization() %>">
-			<aui:field-wrapper helpMessage="the-name-of-this-site-cannot-be-edited-because-it-belongs-to-an-organization" label="name">
-				<liferay-ui:input-resource url="<%= liveGroup.getDescriptiveName(locale) %>" />
-			</aui:field-wrapper>
+			<aui:input helpMessage="the-name-of-this-site-cannot-be-edited-because-it-belongs-to-an-organization" name="name" type="resource" value="<%= liveGroup.getDescriptiveName(locale) %>" />
 		</c:when>
 		<c:otherwise>
 			<aui:input autoFocus="<%= windowState.equals(WindowState.MAXIMIZED) %>" name="name" />
@@ -141,9 +139,7 @@ else if (group != null) {
 	<aui:input name="description" />
 
 	<c:if test="<%= liveGroup != null %>">
-		<aui:field-wrapper label="site-id">
-			<liferay-ui:input-resource url="<%= String.valueOf(liveGroup.getGroupId()) %>" />
-		</aui:field-wrapper>
+		<aui:input name="siteId" type="resource" value="<%= String.valueOf(liveGroup.getGroupId()) %>" />
 	</c:if>
 
 	<c:if test="<%= (group == null) || !group.isCompany() %>">

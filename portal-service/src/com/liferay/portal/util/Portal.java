@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -46,6 +46,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
+import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.TimeZone;
 
@@ -559,6 +560,9 @@ public interface Portal {
 	public long[] getCurrentAndAncestorSiteGroupIds(long groupId)
 		throws PortalException, SystemException;
 
+	public List<Group> getCurrentAndAncestorSiteGroups(long groupId)
+		throws PortalException, SystemException;
+
 	public String getCurrentCompleteURL(HttpServletRequest request);
 
 	public String getCurrentURL(HttpServletRequest request);
@@ -1062,6 +1066,8 @@ public interface Portal {
 	public String getRelativeHomeURL(HttpServletRequest request)
 		throws PortalException, SystemException;
 
+	public ResourceBundle getResourceBundle(Locale locale);
+
 	public long getScopeGroupId(HttpServletRequest request)
 		throws PortalException, SystemException;
 
@@ -1387,6 +1393,8 @@ public interface Portal {
 	 */
 	@Deprecated
 	public Set<String> resetPortletAddDefaultResourceCheckWhitelistActions();
+
+	public String resetPortletParameters(String url, String portletId);
 
 	public void sendError(
 			Exception e, ActionRequest actionRequest,

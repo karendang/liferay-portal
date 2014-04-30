@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -20,8 +20,8 @@ import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.settings.BaseServiceSettings;
 import com.liferay.portal.settings.FallbackKeys;
+import com.liferay.portal.settings.LocalizedValuesMap;
 import com.liferay.portal.settings.Settings;
-import com.liferay.util.ContentUtil;
 
 import java.util.Currency;
 import java.util.Locale;
@@ -137,64 +137,63 @@ public class ShoppingSettings extends BaseServiceSettings {
 		return typedSettings.getValue("emailFromName");
 	}
 
-	public String getEmailOrderConfirmationBody() {
-		String emailOrderConfirmationBody = typedSettings.getValue(
-			"emailOrderConfirmationBody");
+	public LocalizedValuesMap getEmailOrderConfirmationBody() {
+		LocalizedValuesMap emailOrderConfirmationBody =
+			typedSettings.getLocalizedValuesMap("emailOrderConfirmationBody");
 
-		if (Validator.isNotNull(emailOrderConfirmationBody)) {
-			return emailOrderConfirmationBody;
-		}
+		return emailOrderConfirmationBody;
+	}
 
-		return ContentUtil.get(
-			typedSettings.getValue(
-				PropsKeys.SHOPPING_EMAIL_ORDER_CONFIRMATION_BODY));
+	public String getEmailOrderConfirmationBodyXml() {
+		LocalizedValuesMap emailOrderConfirmationBodyMap =
+			getEmailOrderConfirmationBody();
+
+		return emailOrderConfirmationBodyMap.getLocalizationXml();
 	}
 
 	public boolean getEmailOrderConfirmationEnabled() {
 		return typedSettings.getBooleanValue("emailOrderConfirmationEnabled");
 	}
 
-	public String getEmailOrderConfirmationSubject() {
-		String emailOrderConfirmationSubject = typedSettings.getValue(
-			"emailOrderConfirmationSubject");
+	public LocalizedValuesMap getEmailOrderConfirmationSubject() {
+		LocalizedValuesMap emailOrderConfirmationSubject =
+			typedSettings.getLocalizedValuesMap(
+				"emailOrderConfirmationSubject");
 
-		if (Validator.isNotNull(emailOrderConfirmationSubject)) {
-			return emailOrderConfirmationSubject;
-		}
-
-		return ContentUtil.get(
-			typedSettings.getValue(
-				PropsKeys.SHOPPING_EMAIL_ORDER_CONFIRMATION_SUBJECT));
+		return emailOrderConfirmationSubject;
 	}
 
-	public String getEmailOrderShippingBody() {
-		String emailOrderShippingBody = typedSettings.getValue(
-			"emailOrderShippingBody");
+	public String getEmailOrderConfirmationSubjectXml() {
+		LocalizedValuesMap emailOrderConfirmationSubjectMap =
+			getEmailOrderConfirmationSubject();
 
-		if (Validator.isNotNull(emailOrderShippingBody)) {
-			return emailOrderShippingBody;
-		}
+		return emailOrderConfirmationSubjectMap.getLocalizationXml();
+	}
 
-		return ContentUtil.get(
-			typedSettings.getValue(
-				PropsKeys.SHOPPING_EMAIL_ORDER_SHIPPING_BODY));
+	public LocalizedValuesMap getEmailOrderShippingBody() {
+		return typedSettings.getLocalizedValuesMap("emailOrderShippingBody");
+	}
+
+	public String getEmailOrderShippingBodyXml() {
+		LocalizedValuesMap emailOrderShippingBodyMap =
+			getEmailOrderShippingBody();
+
+		return emailOrderShippingBodyMap.getLocalizationXml();
 	}
 
 	public boolean getEmailOrderShippingEnabled() {
 		return typedSettings.getBooleanValue("emailOrderShippingEnabled");
 	}
 
-	public String getEmailOrderShippingSubject() {
-		String emailOrderShippingSubject = typedSettings.getValue(
-			"emailOrderShippingSubject");
+	public LocalizedValuesMap getEmailOrderShippingSubject() {
+		return typedSettings.getLocalizedValuesMap("emailOrderShippingSubject");
+	}
 
-		if (Validator.isNotNull(emailOrderShippingSubject)) {
-			return emailOrderShippingSubject;
-		}
+	public String getEmailOrderShippingSubjectXml() {
+		LocalizedValuesMap emailOrderShippingSubjectMap =
+			getEmailOrderShippingSubject();
 
-		return ContentUtil.get(
-			typedSettings.getValue(
-				PropsKeys.SHOPPING_EMAIL_ORDER_SHIPPING_SUBJECT));
+		return emailOrderShippingSubjectMap.getLocalizationXml();
 	}
 
 	public String[] getInsurance() {
@@ -263,11 +262,23 @@ public class ShoppingSettings extends BaseServiceSettings {
 			"emailFromName", PropsKeys.SHOPPING_EMAIL_FROM_NAME,
 			PropsKeys.ADMIN_EMAIL_FROM_NAME);
 		_fallbackKeys.add(
+			"emailOrderConfirmationBody",
+			PropsKeys.SHOPPING_EMAIL_ORDER_CONFIRMATION_BODY);
+		_fallbackKeys.add(
 			"emailOrderConfirmationEnabled",
 			PropsKeys.SHOPPING_EMAIL_ORDER_CONFIRMATION_ENABLED);
 		_fallbackKeys.add(
+			"emailOrderConfirmationSubject",
+			PropsKeys.SHOPPING_EMAIL_ORDER_CONFIRMATION_SUBJECT);
+		_fallbackKeys.add(
+			"emailOrderShippingBody",
+			PropsKeys.SHOPPING_EMAIL_ORDER_SHIPPING_BODY);
+		_fallbackKeys.add(
 			"emailOrderShippingEnabled",
 			PropsKeys.SHOPPING_EMAIL_ORDER_SHIPPING_ENABLED);
+		_fallbackKeys.add(
+			"emailOrderShippingSubject",
+			PropsKeys.SHOPPING_EMAIL_ORDER_SHIPPING_SUBJECT);
 		_fallbackKeys.add("insurance", PropsKeys.SHOPPING_INSURANCE);
 		_fallbackKeys.add(
 			"insuranceFormula", PropsKeys.SHOPPING_INSURANCE_FORMULA);

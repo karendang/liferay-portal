@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -77,6 +77,17 @@ public class BookmarksFolderAssetRenderer
 	}
 
 	@Override
+	public String getIconCssClass() throws PortalException, SystemException {
+		if (BookmarksFolderServiceUtil.getFoldersAndEntriesCount(
+				_folder.getGroupId(), _folder.getFolderId()) > 0) {
+
+			return "icon-folder-close";
+		}
+
+		return super.getIconCssClass();
+	}
+
+	@Override
 	public String getIconPath(ThemeDisplay themeDisplay) {
 		try {
 			if (BookmarksFolderServiceUtil.getFoldersAndEntriesCount(
@@ -145,8 +156,8 @@ public class BookmarksFolderAssetRenderer
 		throws Exception {
 
 		PortletURL portletURL = liferayPortletResponse.createLiferayPortletURL(
-			getControlPanelPlid(liferayPortletRequest), PortletKeys.BOOKMARKS,
-			PortletRequest.RENDER_PHASE);
+			getControlPanelPlid(liferayPortletRequest),
+			PortletKeys.BOOKMARKS_ADMIN, PortletRequest.RENDER_PHASE);
 
 		portletURL.setParameter("struts_action", "/bookmarks/edit_folder");
 		portletURL.setParameter(

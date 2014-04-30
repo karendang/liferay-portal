@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -71,9 +71,9 @@ viewURL = AssetUtil.checkViewURL(assetEntry, viewInContext, viewURL, currentURL,
 
 	<li class="title-list <%= assetRendererFactory.getType() %>">
 		<liferay-ui:icon
+			iconCssClass="<%= assetRenderer.getIconCssClass() %>"
 			label="<%= true %>"
 			message="<%= HtmlUtil.escape(title) %>"
-			src="<%= assetRenderer.getIconPath(renderRequest) %>"
 			url="<%= viewURL %>"
 		/>
 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -169,7 +169,8 @@ public class CMISRepository extends BaseCmisRepository {
 					properties, contentStream, VersioningState.NONE);
 
 				document.checkIn(
-					true, Collections.EMPTY_MAP, null, StringPool.BLANK);
+					true, Collections.<String, Object>emptyMap(), null,
+					StringPool.BLANK);
 			}
 			else {
 				document = cmisFolder.createDocument(
@@ -227,7 +228,9 @@ public class CMISRepository extends BaseCmisRepository {
 	}
 
 	@Override
-	public FileVersion cancelCheckOut(long fileEntryId) throws SystemException {
+	public FileVersion cancelCheckOut(long fileEntryId)
+		throws PortalException, SystemException {
+
 		Document draftDocument = null;
 
 		try {
@@ -1249,7 +1252,9 @@ public class CMISRepository extends BaseCmisRepository {
 		return toFileEntry(objectId, false);
 	}
 
-	public FileVersion toFileVersion(Document version) throws SystemException {
+	public FileVersion toFileVersion(Document version)
+		throws PortalException, SystemException {
+
 		Object[] ids = getRepositoryEntryIds(version.getId());
 
 		long fileVersionId = (Long)ids[0];
@@ -1260,7 +1265,7 @@ public class CMISRepository extends BaseCmisRepository {
 
 	public Folder toFolder(
 			org.apache.chemistry.opencmis.client.api.Folder cmisFolder)
-		throws SystemException {
+		throws PortalException, SystemException {
 
 		Object[] ids = getRepositoryEntryIds(cmisFolder.getId());
 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -45,8 +45,8 @@ public class JournalUserNotificationTest extends BaseUserNotificationTestCase {
 
 	@Override
 	protected BaseModel<?> addBaseModel() throws Exception {
-		return JournalTestUtil.addArticle(
-			group.getGroupId(), _folder.getFolderId());
+		return JournalTestUtil.addArticleWithWorkflow(
+			group.getGroupId(), _folder.getFolderId(), true);
 	}
 
 	@Override
@@ -70,7 +70,8 @@ public class JournalUserNotificationTest extends BaseUserNotificationTestCase {
 	protected BaseModel<?> updateBaseModel(BaseModel<?> baseModel)
 		throws Exception {
 
-		return JournalTestUtil.updateArticle((JournalArticle)baseModel);
+		return JournalTestUtil.updateArticleWithWorkflow(
+			(JournalArticle)baseModel, true);
 	}
 
 	private JournalFolder _folder;

@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -136,10 +136,17 @@ if (!inlineEdit) {
 		},
 
 		getCkData: function() {
-			var data = CKEDITOR.instances['<%= name %>'].getData();
+			var data;
 
-			if (CKEDITOR.env.gecko && (CKEDITOR.tools.trim(data) == '<br />')) {
-				data = '';
+			if (!window['<%= name %>'].instanceReady && window['<%= HtmlUtil.escapeJS(namespace + initMethod) %>']) {
+				data = window['<%= HtmlUtil.escapeJS(namespace + initMethod) %>']();
+			}
+			else {
+				data = CKEDITOR.instances['<%= name %>'].getData();
+
+				if (CKEDITOR.env.gecko && (CKEDITOR.tools.trim(data) == '<br />')) {
+					data = '';
+				}
 			}
 
 			return data;
@@ -152,6 +159,8 @@ if (!inlineEdit) {
 		getText: function() {
 			return window['<%= name %>'].getCkData();
 		},
+
+		instanceReady: false,
 
 		<c:if test="<%= Validator.isNotNull(onBlurMethod) %>">
 			onBlurCallback: function() {
@@ -282,6 +291,8 @@ if (inlineEdit && (inlineEditSaveURL != null)) {
 			</c:if>
 
 			window['<%= name %>']._setStyles();
+
+			window['<%= name %>'].instanceReady = true;
 		}
 
 		<%

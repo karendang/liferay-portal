@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -55,6 +55,37 @@ public class AUIUtil {
 	 */
 	@Deprecated
 	public static final String LABEL_FIELD_PREFIX = "field-label";
+
+	public static String buildControlGroupCss(
+		boolean inlineField, String inlineLabel, String wrapperCssClass,
+		String baseType) {
+
+		StringBundler sb = new StringBundler(9);
+
+		sb.append("control-group");
+
+		if (inlineField) {
+			sb.append(" control-group-inline");
+		}
+
+		if (Validator.isNotNull(inlineLabel)) {
+			sb.append(" form-inline");
+		}
+
+		if (Validator.isNotNull(wrapperCssClass)) {
+			sb.append(StringPool.SPACE);
+			sb.append(wrapperCssClass);
+		}
+
+		if (Validator.isNotNull(baseType)) {
+			sb.append(StringPool.SPACE);
+			sb.append("input-");
+			sb.append(baseType);
+			sb.append("-wrapper");
+		}
+
+		return sb.toString();
+	}
 
 	public static String buildCss(
 		String prefix, boolean disabled, boolean first, boolean last,

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -38,7 +38,6 @@ import com.liferay.portal.util.PortletKeys;
 import com.liferay.portlet.asset.model.AssetCategory;
 import com.liferay.portlet.asset.service.AssetCategoryLocalServiceUtil;
 import com.liferay.portlet.asset.service.permission.AssetCategoryPermission;
-import com.liferay.portlet.asset.service.persistence.AssetCategoryActionableDynamicQuery;
 
 import java.util.Locale;
 
@@ -57,10 +56,8 @@ public class AssetCategoryIndexer extends BaseIndexer {
 
 	public AssetCategoryIndexer() {
 		setDefaultSelectedFieldNames(
-			new String[] {
-				Field.ASSET_CATEGORY_ID, Field.COMPANY_ID, Field.GROUP_ID,
-				Field.UID,
-			});
+			Field.ASSET_CATEGORY_ID, Field.COMPANY_ID, Field.GROUP_ID,
+			Field.UID);
 		setFilterSearch(true);
 		setPermissionAware(true);
 	}
@@ -211,23 +208,27 @@ public class AssetCategoryIndexer extends BaseIndexer {
 	protected void reindexCategories(final long companyId)
 		throws PortalException, SystemException {
 
-		ActionableDynamicQuery actionableDynamicQuery =
-			new AssetCategoryActionableDynamicQuery() {
-
-			@Override
-			protected void performAction(Object object) throws PortalException {
-				AssetCategory category = (AssetCategory)object;
-
-				Document document = getDocument(category);
-
-				if (document != null) {
-					addDocument(document);
-				}
-			}
-
-		};
+		final ActionableDynamicQuery actionableDynamicQuery =
+			AssetCategoryLocalServiceUtil.getActionableDynamicQuery();
 
 		actionableDynamicQuery.setCompanyId(companyId);
+		actionableDynamicQuery.setPerformActionMethod(
+			new ActionableDynamicQuery.PerformActionMethod() {
+
+				@Override
+				public void performAction(Object object)
+					throws PortalException {
+
+					AssetCategory category = (AssetCategory)object;
+
+					Document document = getDocument(category);
+
+					if (document != null) {
+						actionableDynamicQuery.addDocument(document);
+					}
+				}
+
+			});
 		actionableDynamicQuery.setSearchEngineId(getSearchEngineId());
 
 		actionableDynamicQuery.performActions();

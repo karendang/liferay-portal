@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -28,6 +28,11 @@ import javax.portlet.RenderResponse;
  * @author Alexander Chow
  */
 public abstract class BaseTrashRenderer implements TrashRenderer {
+
+	@Override
+	public String getIconCssClass() {
+		return "icon-page";
+	}
 
 	@Override
 	public String getIconPath(PortletRequest portletRequest) {

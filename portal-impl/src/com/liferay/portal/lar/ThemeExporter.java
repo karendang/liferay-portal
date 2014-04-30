@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -29,6 +29,10 @@ import com.liferay.portlet.layoutsadmin.lar.StagedThemeImpl;
  * @author Mate Thurzo
  */
 public class ThemeExporter {
+
+	public static ThemeExporter getInstance() {
+		return _instance;
+	}
 
 	public void exportTheme(
 			PortletDataContext portletDataContext, LayoutSet layoutSet)
@@ -114,6 +118,11 @@ public class ThemeExporter {
 		cssElement.addCDATA(css);
 	}
 
+	private ThemeExporter() {
+	}
+
 	private static Log _log = LogFactoryUtil.getLog(ThemeExporter.class);
+
+	private static ThemeExporter _instance = new ThemeExporter();
 
 }

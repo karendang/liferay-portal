@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -13,6 +13,8 @@
  */
 
 package com.liferay.portal.kernel.workflow;
+
+import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -46,6 +48,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
  * @author Bruno Farache
  * @author Marcellus Tavares
  */
+@ProviderType
 public class WorkflowHandlerRegistryUtil {
 
 	public static List<WorkflowHandler> getScopeableWorkflowHandlers() {
@@ -111,11 +114,11 @@ public class WorkflowHandlerRegistryUtil {
 			return;
 		}
 
-		WorkflowInstanceLink workflowInstanceLink =
-			WorkflowInstanceLinkLocalServiceUtil.fetchWorkflowInstanceLink(
+		boolean hasWorkflowInstanceInProgress =
+			_instance._hasWorkflowInstanceInProgress(
 				companyId, groupId, className, classPK);
 
-		if (workflowInstanceLink != null) {
+		if (hasWorkflowInstanceInProgress) {
 			if (_log.isWarnEnabled()) {
 				_log.warn(
 					"Workflow already started for class " + className +
@@ -245,6 +248,29 @@ public class WorkflowHandlerRegistryUtil {
 
 	private List<WorkflowHandler> _getWorkflowHandlers() {
 		return ListUtil.fromMapValues(_workflowHandlerMap);
+	}
+
+	private boolean _hasWorkflowInstanceInProgress(
+			long companyId, long groupId, String className, long classPK)
+		throws PortalException, SystemException {
+
+		WorkflowInstanceLink workflowInstanceLink =
+			WorkflowInstanceLinkLocalServiceUtil.fetchWorkflowInstanceLink(
+				companyId, groupId, className, classPK);
+
+		if (workflowInstanceLink == null) {
+			return false;
+		}
+
+		WorkflowInstance workflowInstance =
+			WorkflowInstanceManagerUtil.getWorkflowInstance(
+				companyId, workflowInstanceLink.getWorkflowInstanceId());
+
+		if (!workflowInstance.isComplete()) {
+			return true;
+		}
+
+		return false;
 	}
 
 	private void _register(WorkflowHandler workflowHandler) {

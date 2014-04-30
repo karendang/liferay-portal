@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -144,7 +144,7 @@ boolean viewPreview = ParamUtil.getBoolean(request, "viewPreview");
 							<c:choose>
 								<c:when test='<%= !displayStyle.equals("list") %>' >
 									<div class="add-content-thumbnail <%= displayStyle.equals("descriptive") ? "span4" : StringPool.BLANK %>">
-										<img src="<%= HtmlUtil.escapeAttribute(assetRenderer.getThumbnailPath(liferayPortletRequest)) %>" />
+										<img alt="<liferay-ui:message key="thumbnail" />" src="<%= HtmlUtil.escapeAttribute(assetRenderer.getThumbnailPath(liferayPortletRequest)) %>" />
 									</div>
 
 									<div class="add-content-details <%= displayStyle.equals("descriptive") ? "span8" : StringPool.BLANK %>">

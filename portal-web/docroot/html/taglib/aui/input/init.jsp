@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -44,6 +44,7 @@ java.lang.String inlineLabel = GetterUtil.getString((java.lang.String)request.ge
 java.lang.String label = GetterUtil.getString((java.lang.String)request.getAttribute("aui:input:label"));
 java.lang.String languageId = GetterUtil.getString((java.lang.String)request.getAttribute("aui:input:languageId"));
 boolean last = GetterUtil.getBoolean(String.valueOf(request.getAttribute("aui:input:last")));
+boolean localized = GetterUtil.getBoolean(String.valueOf(request.getAttribute("aui:input:localized")));
 java.lang.Number max = GetterUtil.getNumber(String.valueOf(request.getAttribute("aui:input:max")), null);
 java.lang.Class<?> model = (java.lang.Class<?>)request.getAttribute("aui:input:model");
 java.lang.Number min = GetterUtil.getNumber(String.valueOf(request.getAttribute("aui:input:min")), null);
