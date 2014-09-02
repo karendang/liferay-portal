@@ -3212,6 +3212,10 @@ if (ppstate.equals("normal")) {
 		<echo file="test.package.names.properties">TEST_PACKAGE_NAMES=${test.package.names}</echo>
 	</target>
 
+	<target name="rename">
+		<move file="${token}" tofile="${value}" />
+	</target>
+
 	<target name="revert-test-properties">
 		<execute>
 			<![CDATA[git checkout -- portal-impl/test/portal-test.properties]]>
