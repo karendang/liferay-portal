@@ -1824,6 +1824,23 @@ public class SeleniumBuilderTest {
 	}
 
 	@Test
+	public void testTestCaseActionCommandMissingAttributeValue()
+		throws Exception {
+
+		test(
+			"TestCaseActionCommandMissingAttributeValue_1.testcase",
+			"Error 1018: Missing attribute value (-Dtoken | -Dvalue) in " +
+				"value1 in " + _DIR_NAME +
+				"/TestCaseActionCommandMissingAttributeValue_1.testcase:3");
+
+		test(
+			"TestCaseActionCommandMissingAttributeValue_2.testcase",
+			"Error 1018: Missing attribute value (-Dtoken | -Dvalue) in " +
+				"value1 in " + _DIR_NAME +
+				"/TestCaseActionCommandMissingAttributeValue_2.testcase:3");
+	}
+
+	@Test
 	public void testTestCaseCommandElement1001() throws Exception {
 		test(
 			"TestCaseCommandElement1001.testcase",
