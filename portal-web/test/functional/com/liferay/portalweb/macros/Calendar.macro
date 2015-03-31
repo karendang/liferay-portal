@@ -1,4 +1,27 @@
 <definition>
+	<command name="viewBusyDaySmallCalendar">
+		<var name="key_dateNumber" value="${dateNumber}" />
+
+		<execute function="AssertElementPresent" locator1="PGCalendar#SMALL_CALENDAR_BUSY_DAY" />
+		<execute function="Click" locator1="PGCalendar#SMALL_CALENDAR_BUSY_DAY" />
+	</command>
+
+	<command name="viewMonthSmallCalendar">
+		<while>
+			<condition function="IsTextNotEqual" locator1="PGCalendar#SMALL_CALENDAR_DATE" value1="February 2015" />
+			<then>
+				<execute function="Click" locator1="PGCalendar#SMALL_CALENDAR_PREVIOUS" />
+			</then>
+		</while>
+
+		<while>
+			<condition function="IsTextNotEqual" locator1="PGCalendar#SMALL_CALENDAR_DATE" value1="${dateMonth}" />
+			<then>
+				<execute function="Click" locator1="PGCalendar#SMALL_CALENDAR_NEXT" />
+			</then>
+		</while>
+	</command>
+
 	<command name="addPG">
 		<execute macro="CalendarEvent#changeViewPG">
 			<var name="viewType" value="Week" />
