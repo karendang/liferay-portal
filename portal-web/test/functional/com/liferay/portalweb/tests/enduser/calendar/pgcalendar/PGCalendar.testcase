@@ -48,6 +48,69 @@
 		<execute macro="Site#tearDownCP" />
 	</tear-down>
 
+	<command name="AddCalendarEventRepeatingYearly" priority="5">
+		<description message="This is a use case for LPS-51402." />
+
+		<var name="eventTitle" value="Calendar Event Repeating Title" />
+		<var name="eventType" value="Repeating" />
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="CalendarEvent#gotoAdd" />
+
+		<execute macro="CalendarEvent#editTitle">
+			<var name="eventTitle" value="Calendar Event Repeating Title" />
+		</execute>
+
+		<execute macro="CalendarEvent#setDates">
+			<var name="startDate" value="02/15/2015" />
+			<var name="endDate" value="02/15/2015" />
+		</execute>
+
+		<execute macro="CalendarEvent#setRepeating">
+			<var name="frequency" value="Yearly" />
+			<var name="month" value="February" />
+			<var name="position" value="First" />
+			<var name="weekday" value="Tuesday" />
+		</execute>
+
+		<execute macro="CalendarEvent#save" />
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="Calendar#viewMonthSmallCalendar">
+			<var name="dateMonth" value="February 2016" />
+		</execute>
+
+		<execute macro="Calendar#viewBusyDaySmallCalendar">
+			<var name="dateNumber" value="2" />
+		</execute>
+
+		<execute macro="CalendarEvent#viewPG">
+			<var name="eventTitle" value="${eventTitle}" />
+		</execute>
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="Calendar#viewMonthSmallCalendar">
+			<var name="dateMonth" value="February 2017" />
+		</execute>
+
+		<execute macro="Calendar#viewBusyDaySmallCalendar">
+			<var name="dateNumber" value="7" />
+		</execute>
+
+		<execute macro="CalendarEvent#viewPG">
+			<var name="eventTitle" value="${eventTitle}" />
+		</execute>
+	</command>
+
 	<command name="AddCalendarEventAllDay" priority="5">
 		<var name="eventTitle" value="Calendar Event All Day Title" />
 		<var name="eventType" value="All Day" />
