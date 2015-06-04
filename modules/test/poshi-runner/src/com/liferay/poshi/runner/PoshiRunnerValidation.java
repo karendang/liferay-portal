@@ -126,7 +126,7 @@ public class PoshiRunnerValidation {
 			"description", "echo", "execute", "fail", "for", "if", "property",
 			"take-screenshot", "task", "var", "while");
 
-		if (filePath.endsWith(".function")) {
+		if (Validator.isNotNull(filePath) && filePath.endsWith(".function")) {
 			possibleElementNames = Arrays.asList("execute", "if");
 		}
 
@@ -414,7 +414,7 @@ public class PoshiRunnerValidation {
 			"function", "macro", "macro-desktop", "macro-mobile", "selenium",
 			"test-case");
 
-		if (filePath.endsWith(".function")) {
+		if (Validator.isNotNull(filePath) && filePath.endsWith(".function")) {
 			multiplePrimaryAttributeNames = null;
 			primaryAttributeNames = Arrays.asList("function", "selenium");
 		}

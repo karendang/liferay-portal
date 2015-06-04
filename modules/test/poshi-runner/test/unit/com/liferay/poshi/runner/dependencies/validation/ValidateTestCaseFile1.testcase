@@ -1,0 +1,16 @@
+<definition component-name="test">
+	<property name="testray.main.component.name" value="Tools" />
+	<var name="test" value="pass" />
+
+	<set-up>
+		<execute function="Open" locator1="//here" />
+	</set-up>
+
+	<tear-down>
+		<execute function="Close" locator1="//here" />
+	</tear-down>
+
+	<command name="testCaseFile">
+		<execute macro="ValidateMacroContext#validateMacroContextPass" />
+	</command>
+</definition>

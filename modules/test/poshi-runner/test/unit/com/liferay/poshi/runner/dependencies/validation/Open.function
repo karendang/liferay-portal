@@ -1,0 +1,7 @@
+<definition default="open">
+	<command name="open">
+		<execute argument1="//hello" selenium="open" />
+
+		<execute macro="ParseElements#pass" />
+	</command>
+</definition>
