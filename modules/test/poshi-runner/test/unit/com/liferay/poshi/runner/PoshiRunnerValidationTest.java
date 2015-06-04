@@ -777,8 +777,7 @@ public class PoshiRunnerValidationTest extends TestCase {
 
 		Assert.assertEquals(
 			"validateIfElement is failing",
-			"Missing or invalid if condition element",
-			_getExceptionMessage());
+			"Missing or invalid if condition element", _getExceptionMessage());
 
 		PoshiRunnerValidation.clearExceptions();
 
@@ -804,8 +803,7 @@ public class PoshiRunnerValidationTest extends TestCase {
 
 		Assert.assertEquals(
 			"validateIfElement is failing",
-			"Missing or invalid if condition element",
-			_getExceptionMessage());
+			"Missing or invalid if condition element", _getExceptionMessage());
 	}
 
 	@Test
