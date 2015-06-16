@@ -46,30 +46,11 @@ public abstract class BaseWebDriverImpl
 
 		System.setProperty("java.awt.headless", "false");
 
-		String dependenciesDirName =
-			"portal-web//test//functional//com//liferay//portalweb//" +
-				"dependencies//";
-
-		String outputDirName = PropsValues.OUTPUT_DIR_NAME;
-
-		String sikuliImagesDirName = dependenciesDirName + "sikuli//linux//";
-
 		if (OSDetector.isWindows()) {
-			dependenciesDirName = StringUtil.replace(
-				dependenciesDirName, "//", "\\");
-			outputDirName = StringUtil.replace(outputDirName, "//", "\\");
 			projectDirName = StringUtil.replace(projectDirName, "//", "\\");
-
-			sikuliImagesDirName = StringUtil.replace(
-				sikuliImagesDirName, "//", "\\");
-			sikuliImagesDirName = StringUtil.replace(
-				sikuliImagesDirName, "linux", "windows");
 		}
 
-		_dependenciesDirName = dependenciesDirName;
-		_outputDirName = outputDirName;
 		_projectDirName = projectDirName;
-		_sikuliImagesDirName = sikuliImagesDirName;
 
 		WebDriver.Options options = webDriver.manage();
 
@@ -337,7 +318,7 @@ public abstract class BaseWebDriverImpl
 
 	@Override
 	public String getDependenciesDirName() {
-		return _dependenciesDirName;
+		return _DEPENDENCIES_DIR_NAME;
 	}
 
 	@Override
@@ -402,7 +383,7 @@ public abstract class BaseWebDriverImpl
 
 	@Override
 	public String getOutputDirName() {
-		return _outputDirName;
+		return _OUTPUT_DIR_NAME;
 	}
 
 	@Override
@@ -417,7 +398,11 @@ public abstract class BaseWebDriverImpl
 
 	@Override
 	public String getSikuliImagesDirName() {
-		return _sikuliImagesDirName;
+		if (OSDetector.isWindows()) {
+			return _SIKULI_IMAGES_DIR_NAME.replace("linux", "windows");
+		}
+
+		return _SIKULI_IMAGES_DIR_NAME;
 	}
 
 	@Override
@@ -815,7 +800,7 @@ public abstract class BaseWebDriverImpl
 
 	@Override
 	public void uploadCommonFile(String location, String value) {
-		uploadFile(location, _projectDirName + _dependenciesDirName + value);
+		uploadFile(location, _projectDirName + _DEPENDENCIES_DIR_NAME + value);
 	}
 
 	@Override
@@ -835,7 +820,7 @@ public abstract class BaseWebDriverImpl
 			slash = "\\";
 		}
 
-		uploadFile(location, _outputDirName + slash + value);
+		uploadFile(location, _OUTPUT_DIR_NAME + slash + value);
 	}
 
 	@Override
@@ -945,11 +930,16 @@ public abstract class BaseWebDriverImpl
 		super.waitForPageToLoad("30000");
 	}
 
+	private static final String _DEPENDENCIES_DIR_NAME =
+		PropsValues.TEST_DEPENDENCIES_DIR_NAME;
+
+	private static final String _OUTPUT_DIR_NAME = PropsValues.OUTPUT_DIR_NAME;
+
+	private static final String _SIKULI_IMAGES_DIR_NAME =
+		_DEPENDENCIES_DIR_NAME + "sikuli//linux//";
+
 	private String _clipBoard = "";
-	private final String _dependenciesDirName;
-	private final String _outputDirName;
 	private String _primaryTestSuiteName;
 	private final String _projectDirName;
-	private final String _sikuliImagesDirName;
 
 }
