@@ -17,6 +17,8 @@ apply plugin: "com.liferay.poshi.runner"
 poshiRunner {
 	baseDir = file("test/functional")
 
+	poshiProperty "test.dependenciesdir", "com/liferay/portalweb/dependencies"
+
 	if (project.hasProperty("seleniumLoggerEnabled")) {
 		poshiProperty "selenium.logger.enabled", project.properties["seleniumLoggerEnabled"]
 	}
