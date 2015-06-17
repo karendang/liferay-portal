@@ -1788,7 +1788,7 @@ public class LiferaySeleniumHelper {
 	}
 
 	private static final String _TEST_BASE_DIR =
-		PoshiRunnerGetterUtil.getCanonicalPath(PropsValues.TEST_BASE_DIR_NAME);
+		PoshiRunnerGetterUtil.getCanonicalPath(PropsValues.TEST_BASE_DIR);
 
 	private static final Pattern _aceEditorPattern = Pattern.compile(
 		"\\(|\\$\\{line\\.separator\\}");

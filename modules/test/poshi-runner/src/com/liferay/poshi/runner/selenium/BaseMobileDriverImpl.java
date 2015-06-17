@@ -790,7 +790,7 @@ public abstract class BaseMobileDriverImpl
 	}
 
 	private static final String _DEPENDENCIES_DIR_NAME =
-		PropsValues.TEST_DEPENDENCIES_DIR_NAME;
+		PropsValues.TEST_DEPENDENCIES_DIR;
 
 	private static final String _OUTPUT_DIR_NAME = PropsValues.OUTPUT_DIR_NAME;
 
