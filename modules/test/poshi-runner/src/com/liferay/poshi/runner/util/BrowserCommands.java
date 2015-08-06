@@ -22,7 +22,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class BrowserCommands {
 
-	public static void downloadTempFile(String value) {
+	public static void downloadTempFile() {
 		if (_SELENIUM_IMPLEMENTATION.equals(WebDriver.class.getName())) {
 			if (_BROWSER_TYPE.equals("*chrome") ||
 				_BROWSER_TYPE.equals("*firefox") ||
