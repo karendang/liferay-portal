@@ -22,6 +22,9 @@ import org.openqa.selenium.WebDriver;
  */
 public class BrowserCommands {
 
+	/**
+	 * Downloads the temp file
+	 */
 	public static void downloadTempFile() {
 		if (_SELENIUM_IMPLEMENTATION.equals(WebDriver.class.getName())) {
 			if (_BROWSER_TYPE.equals("*chrome") ||
@@ -48,6 +51,9 @@ public class BrowserCommands {
 		}
 	}
 
+	/**
+	 * Terminates all firefox browsers
+	 */
 	public static void killBrowser() {
 		try {
 			Runtime runtime = Runtime.getRuntime();
@@ -63,6 +69,9 @@ public class BrowserCommands {
 		}
 	}
 
+	/**
+	 * Sets browser option for Internet Explorer
+	 */
 	public static void setBrowserOption() {
 		if (_SELENIUM_IMPLEMENTATION.equals(WebDriver.class.getName())) {
 			if (_BROWSER_TYPE.equals("*chrome") ||

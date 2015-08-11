@@ -34,6 +34,12 @@ import javax.mail.internet.MimeMessage.RecipientType;
  */
 public class EmailCommands {
 
+	/**
+	 * Connects to gmail via imap with given email address and password
+	 *
+	 * @param  emailAddress		email address
+	 * @param  emailPassword	email password
+	 */
 	public static void connectToEmailAccount(
 			String emailAddress, String emailPassword)
 		throws Exception {
@@ -68,6 +74,9 @@ public class EmailCommands {
 		_transport.connect("smtp.gmail.com", emailAddress, emailPassword);
 	}
 
+	/**
+	 * Deletes all email messages
+	 */
 	public static void deleteAllEmails() throws Exception {
 		Message[] messages = _imapFolder.getMessages();
 
@@ -78,6 +87,11 @@ public class EmailCommands {
 		_imapFolder.close(true);
 	}
 
+	/**
+	 * Retrieves the email body text
+	 *
+	 * @param  index	email message number
+	 */
 	public static String getEmailBody(int index) throws Exception {
 		Message message = _imapFolder.getMessage(index);
 
@@ -86,6 +100,11 @@ public class EmailCommands {
 		return body.trim();
 	}
 
+	/**
+	 * Retrieves the email subject text
+	 *
+	 * @param  index	email message number
+	 */
 	public static String getEmailSubject(int index) throws Exception {
 		Message message = _imapFolder.getMessage(index);
 
@@ -94,6 +113,12 @@ public class EmailCommands {
 		return subject;
 	}
 
+	/**
+	 * Sends a reply to a specified recipient with a specified body text
+	 *
+	 * @param  to	email recipient
+	 * @param  body	text in the body of the email
+	 */
 	public static void replyToEmail(String to, String body) throws Exception {
 		Message message = _imapFolder.getMessage(1);
 
@@ -108,6 +133,14 @@ public class EmailCommands {
 		_transport.close();
 	}
 
+	/**
+	 * Sends an email to a specified recipient with a specified subject header
+	 * and body text
+	 *
+	 * @param  to		email recipient
+	 * @param  subject	text in the subject of the email
+	 * @param  body		text in the body of the email
+	 */
 	public static void sendEmail(String to, String subject, String body)
 		throws Exception {
 
