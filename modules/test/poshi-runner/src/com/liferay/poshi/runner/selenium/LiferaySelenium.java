@@ -49,7 +49,7 @@ public interface LiferaySelenium extends Selenium {
 	 *
 	 * @param	locator	location of the element
 	 */
-	public void assertChecked(String pattern) throws Exception;
+	public void assertChecked(String locator) throws Exception;
 
 	/**
 	 * Asserts the given message matches the JavaScript dialog generated during
