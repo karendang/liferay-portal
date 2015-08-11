@@ -526,7 +526,7 @@ public class LiferaySeleniumHelper {
 		LiferaySelenium liferaySelenium, String pattern) {
 
 		TestCase.assertTrue(
-			Validator.equals(pattern, liferaySelenium.getAlert()));
+			!Validator.equals(pattern, liferaySelenium.getAlert()));
 	}
 
 	/**
