@@ -36,6 +36,13 @@ public class MobileDriverWrapper
 		_mobileDriver = mobileDriver;
 	}
 
+	/**
+	 * Switch the focus of future commands for this driver to the context with
+	 * the given name
+	 *
+	 * @param	name name of the context
+	 * @return	returns the WebDriver focused on the given window
+	 */
 	@Override
 	public WebDriver context(String name) {
 		return _mobileDriver.context(name);
@@ -46,21 +53,49 @@ public class MobileDriverWrapper
 		return _mobileDriver.execute(driverCommand, parameters);
 	}
 
+	/**
+	 * Return an opaque handle to this context that uniquely identifies it
+	 * within this driver instance
+	 *
+	 * @return	Return an opaque handle to this context that uniquely identifies
+	 * 			it within this driver instance
+	 */
 	@Override
 	public String getContext() {
 		return _mobileDriver.getContext();
 	}
 
+	/**
+	 * Return a set of context handles which can be used to iterate over all
+	 * contexts of this WebDriver instance
+	 *
+	 * @return	returns a set of context handles which can be used to iterate
+	 * over available contexts
+	 */
 	@Override
 	public Set<String> getContextHandles() {
 		return _mobileDriver.getContextHandles();
 	}
 
+	/**
+	 * Performs multiple TouchAction gestures at the same time, to simulate
+	 * multiple fingers/touch inputs.
+	 *
+	 * @param	multiAction the MultiTouchAction object to perform
+	 */
 	@Override
 	public void performMultiTouchAction(MultiTouchAction multiAction) {
 		_mobileDriver.performMultiTouchAction(multiAction);
 	}
 
+	/**
+	 * Performs a chain of touch actions, which together can be considered an
+	 * entire gesture.
+	 *
+	 * @param 	touchAction TouchAction object, which contains a list of
+	 * 			individual touch actions to perform
+	 * @return 	returns the same touch action object
+	 */
 	@Override
 	public TouchAction performTouchAction(TouchAction touchAction) {
 		return _mobileDriver.performTouchAction(touchAction);

@@ -81,7 +81,7 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Appends the exception to the list of JavaScript exceptions
 	 *
-	 * @param	exception	exception thrown
+	 * @param	exception exception thrown
 	 */
 	public static void addToJavaScriptExceptions(Exception exception) {
 		_javaScriptExceptions.add(exception);
@@ -90,7 +90,7 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Appends the exception to the list of Liferay exceptions
 	 *
-	 * @param	exception	exception thrown
+	 * @param	exception exception thrown
 	 */
 	public static void addToLiferayExceptions(Exception exception) {
 		_liferayExceptions.add(exception);
@@ -100,9 +100,9 @@ public class LiferaySeleniumHelper {
 	 * Executes an ant command with specified file and target names
 	 *
 	 * @exception	throws an exception when the ant execution fails
-	 * @param	fileName			name of the file where the target lives
-	 * @param 	liferaySelenium	liferaySelenium object
-	 * @param	target			target to call
+	 * @param	fileName name of the file where the target lives
+	 * @param 	liferaySelenium liferaySelenium object
+	 * @param	target target to call
 	 */
 	public static void antCommand(
 			LiferaySelenium liferaySelenium, String fileName, String target)
@@ -128,10 +128,10 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Asserts the prompted alert is the specified pattern
 	 *
-	 * @exception	throws and exception when the alert does not match the
+	 * @exception	throws an exception when the alert does not match the
 	 * 				pattern
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	pattern			pattern to search for in the alert
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	pattern pattern to search for in the alert
 	 */
 	public static void assertAlert(
 			LiferaySelenium liferaySelenium, String pattern)
@@ -144,7 +144,7 @@ public class LiferaySeleniumHelper {
 	 * Asserts the no alert is prompted
 	 *
 	 * @exception  throws an exception when the alert is not present
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	liferaySelenium liferaySelenium object
 	 */
 	public static void assertAlertNotPresent(LiferaySelenium liferaySelenium)
 		throws Exception {
@@ -158,8 +158,8 @@ public class LiferaySeleniumHelper {
 	 * Asserts the element is checked
 	 *
 	 * @exception  throws an exception when element is not checked
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
 	 */
 	public static void assertChecked(
 			LiferaySelenium liferaySelenium, String locator)
@@ -179,8 +179,8 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception  	throws an exception the confirmation message does not match
 	 * 				the pattern
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	pattern			pattern to search for in the dialog
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	pattern pattern to search for in the dialog
 	 */
 	public static void assertConfirmation(
 			LiferaySelenium liferaySelenium, String pattern)
@@ -199,7 +199,7 @@ public class LiferaySeleniumHelper {
 	 * Asserts the specified text is not in the console
 	 *
 	 * @exception	throws an exception when text is present in the console
-	 * @param	text	text to search for in the console
+	 * @param	text text to search for in the console
 	 */
 	public static void assertConsoleTextNotPresent(String text)
 		throws Exception {
@@ -213,7 +213,7 @@ public class LiferaySeleniumHelper {
 	 * Asserts the specified text is in the console
 	 *
 	 * @exception	throws an exception when text is not present in the console
-	 * @param	text	text to search for in the console
+	 * @param	text text to search for in the console
 	 */
 	public static void assertConsoleTextPresent(String text) throws Exception {
 		if (!isConsoleTextPresent(text)) {
@@ -225,8 +225,8 @@ public class LiferaySeleniumHelper {
 	 * Asserts the specified text is not in the console
 	 *
 	 * @exception	throws an exception when element is not editable
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of element
 	 */
 	public static void assertEditable(
 			LiferaySelenium liferaySelenium, String locator)
@@ -242,8 +242,8 @@ public class LiferaySeleniumHelper {
 	 * Asserts the element is not present
 	 *
 	 * @exception	throws an exception when element is present
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of element
 	 */
 	public static void assertElementNotPresent(
 			LiferaySelenium liferaySelenium, String locator)
@@ -258,8 +258,8 @@ public class LiferaySeleniumHelper {
 	 * Asserts the element is present
 	 *
 	 * @exception	throws an exception when element is not present
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of element
 	 */
 	public static void assertElementPresent(
 			LiferaySelenium liferaySelenium, String locator)
@@ -275,9 +275,9 @@ public class LiferaySeleniumHelper {
 	 * Asserts the email body is the same as the specified body
 	 *
 	 * @exception	throws an exception when email body is the same as the body
-	 * @param	index			email message number
-	 * @param 	liferaySelenium	liferaySelenium object
-	 * @param	body			text to match with the email body
+	 * @param	index email message number
+	 * @param 	liferaySelenium liferaySelenium object
+	 * @param	body text to match with the email body
 	 */
 	public static void assertEmailBody(
 			LiferaySelenium liferaySelenium, String index, String body)
@@ -291,9 +291,9 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when email subject is the same as the
 	 * 				subject
-	 * @param	index			email message number
-	 * @param 	liferaySelenium	liferaySelenium object
-	 * @param	subject			text to match with the email subject
+	 * @param	index email message number
+	 * @param 	liferaySelenium liferaySelenium object
+	 * @param	subject text to match with the email subject
 	 */
 	public static void assertEmailSubject(
 			LiferaySelenium liferaySelenium, String index, String subject)
@@ -307,8 +307,8 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when pattern does exist in the HTML
 	 * 				source
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	value			text to search for in the HTML source code
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	value text to search for in the HTML source code
 	 */
 	public static void assertHTMLSourceTextNotPresent(
 			LiferaySelenium liferaySelenium, String value)
@@ -325,8 +325,8 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when pattern does not exist in the HTML
 	 * 				source
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	value			text to search for in the HTML source code
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	value text to search for in the HTML source code
 	 */
 	public static void assertHTMLSourceTextPresent(
 			LiferaySelenium liferaySelenium, String value)
@@ -343,8 +343,8 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when errors are not included in the list
 	 * 				of ignored errors
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	value			text to search for in the HTML source code
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	value text to search for in the HTML source code
 	 */
 	public static void assertLiferayErrors() throws Exception {
 		String fileName = PropsValues.TEST_CONSOLE_LOG_FILE_NAME;
@@ -419,8 +419,8 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when the location differs from the
 	 * 				pattern
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	pattern			location/url
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	pattern location/url
 	 */
 	public static void assertLocation(
 		LiferaySelenium liferaySelenium, String pattern) {
@@ -519,8 +519,8 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when the alert is the same as the
 	 * 				pattern
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	pattern			the pattern to match with the alert
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	pattern the pattern to match with the alert
 	 */
 	public static void assertNotAlert(
 		LiferaySelenium liferaySelenium, String pattern) {
@@ -533,8 +533,8 @@ public class LiferaySeleniumHelper {
 	 * Asserts element is not checked
 	 *
 	 * @exception	throws an exception when the element is checked
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
 	 */
 	public static void assertNotChecked(
 			LiferaySelenium liferaySelenium, String locator)
@@ -551,8 +551,8 @@ public class LiferaySeleniumHelper {
 	 * Asserts element is not editable
 	 *
 	 * @exception	throws an exception when the element is editable
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
 	 */
 	public static void assertNotEditable(
 			LiferaySelenium liferaySelenium, String locator)
@@ -568,8 +568,8 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when the location is the same as the
 	 * 				pattern
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	pattern			location/url
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	pattern location/url
 	 */
 	public static void assertNotLocation(
 		LiferaySelenium liferaySelenium, String pattern) {
@@ -583,9 +583,9 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when the element text contains the
 	 * 				pattern
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	pattern			pattern to search for in the element text
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
 	 */
 	public static void assertNotPartialText(
 			LiferaySelenium liferaySelenium, String locator, String pattern)
@@ -607,9 +607,9 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when the element selected is the same as
 	 * 				the pattern
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	selectLocator	location of the element
-	 * @param	pattern			pattern to search for in the selected element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	selectLocator location of the element
+	 * @param	pattern pattern to search for in the selected element
 	 */
 	public static void assertNotSelectedLabel(
 			LiferaySelenium liferaySelenium, String selectLocator,
@@ -632,9 +632,9 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when the element text is the same as the
 	 * 				pattern
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	pattern			pattern to search for in the element text
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
 	 */
 	public static void assertNotText(
 			LiferaySelenium liferaySelenium, String locator, String pattern)
@@ -656,9 +656,9 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when the element value is the same as
 	 * 				the pattern
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	pattern			pattern to search for in the element value
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element value
 	 */
 	public static void assertNotValue(
 			LiferaySelenium liferaySelenium, String locator, String pattern)
@@ -679,8 +679,8 @@ public class LiferaySeleniumHelper {
 	 * Asserts the element value is not visible
 	 *
 	 * @exception	throws an exception when the element value is visible
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
 	 */
 	public static void assertNotVisible(
 			LiferaySelenium liferaySelenium, String locator)
@@ -700,7 +700,7 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when the confirmation does not contain
 	 * 				the pattern
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	liferaySelenium liferaySelenium object
 	 * @param	pattern	pattern to search for in the confirmation dialog
 	 */
 	public static void assertPartialConfirmation(
@@ -745,9 +745,9 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when the element selected is not the
 	 * 				same as the pattern
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	pattern			pattern to search for in the selected element
-	 * @param	selectLocator	location of the element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	pattern pattern to search for in the selected element
+	 * @param	selectLocator location of the element
 	 */
 	public static void assertSelectedLabel(
 			LiferaySelenium liferaySelenium, String selectLocator,
@@ -770,7 +770,7 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when the element text does not equal the
 	 * 				pattern
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	liferaySelenium liferaySelenium object
 	 * @param	locator	location of the element
 	 * @param	pattern	pattern to search for in the element text
 	 */
@@ -793,7 +793,7 @@ public class LiferaySeleniumHelper {
 	 * Asserts the specified pattern is not present
 	 *
 	 * @exception	throws an exception when the specified pattern is present
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	liferaySelenium liferaySelenium object
 	 * @param	pattern	pattern to search for
 	 */
 	public static void assertTextNotPresent(
@@ -810,7 +810,7 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when the specified pattern is not
 	 * 				present
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	liferaySelenium liferaySelenium object
 	 * @param	pattern	pattern to search for
 	 */
 	public static void assertTextPresent(
@@ -827,7 +827,7 @@ public class LiferaySeleniumHelper {
 	 *
 	 * @exception	throws an exception when the element value does not equal
 	 * 				the value
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	liferaySelenium liferaySelenium object
 	 * @param	locator	location of the element
 	 * @param	pattern	pattern to search for in the element value
 	 */
@@ -850,7 +850,7 @@ public class LiferaySeleniumHelper {
 	 * Asserts the element is visible
 	 *
 	 * @exception  throws an exception when the element is not visible
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	liferaySelenium liferaySelenium object
 	 * @param	locator	location of the element
 	 */
 	public static void assertVisible(
@@ -868,7 +868,7 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Takes a screen-capture of the current screen
 	 *
-	 * @param	fileName	name for the captured image
+	 * @param	fileName name for the captured image
 	 */
 	public static void captureScreen(String fileName) throws Exception {
 		if (!PropsValues.SAVE_SCREENSHOT) {
@@ -893,8 +893,8 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Connects to gmail via imap with given email address and password
 	 *
-	 * @param	emailAddress		email address
-	 * @param	emailPassword	email password
+	 * @param	emailAddress email address
+	 * @param	emailPassword email password
 	 */
 	public static void connectToEmailAccount(
 			String emailAddress, String emailPassword)
@@ -953,8 +953,8 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Returns the ImageTarget object of the specified image
 	 *
-	 * @param	image			location of the image
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	image location of the image
+	 * @param	liferaySelenium liferaySelenium object
 	 * @return	returns the ImageTarget object of the image
 	 */
 	public static ImageTarget getImageTarget(
@@ -989,12 +989,13 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if an element is present at the specified location
+	 * Returns <code>true<code> if an element is present at the specified
+	 * location
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @return	returns 		true if an element is present at the specified
-	 * 							location
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @return	returns <code>true<code> if an element is present at the
+	 * 			specified location
 	 */
 	public static boolean isConfirmation(
 		LiferaySelenium liferaySelenium, String pattern) {
@@ -1005,10 +1006,10 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if the specified text is in the console
+	 * Returns <code>true<code> if the specified text is in the console
 	 *
-	 * @param	text	text to search for in the console
-	 * @return	returns true if the text is in the console
+	 * @param	text text to search for in the console
+	 * @return	returns <code>true<code> if the text is in the console
 	 */
 	public static boolean isConsoleTextPresent(String text) throws Exception {
 		String fileName = PropsValues.TEST_CONSOLE_LOG_FILE_NAME;
@@ -1055,12 +1056,13 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if an element is present at the specified location after a
-	 * wait of up to the time specified in the property timeout.explicit.wait
+	 * Returns <code>true<code> if an element is present at the specified
+	 * location after a wait of up to the time specified in the property
+	 * timeout.explicit.wait
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @return	returns 		true if an element is present after wait
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @return	returns <code>true<code> if an element is present after wait
 	 */
 	public static boolean isElementPresentAfterWait(
 			LiferaySelenium liferaySelenium, String locator)
@@ -1082,11 +1084,12 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if the specific value is present in the HTML source code
+	 * Returns <code>true<code> if the specific value is present in the HTML
+	 * source code
 	 *
-	 * @param	value	text to find in the HTML source code
-	 * @return	returns true if the specific value is present in the HTML source
-	 * 			code
+	 * @param	value text to find in the HTML source code
+	 * @return	returns <code>true<code> if the specific value is present in the
+	 * 			HTML source code
 	 */
 	public static boolean isHTMLSourceTextPresent(
 			LiferaySelenium liferaySelenium, String value)
@@ -1119,11 +1122,11 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if the line is an ignorable error defined in property
-	 * ignore.errors
+	 * Returns <code>true<code> if the line is an ignorable error defined in
+	 * property ignore.errors
 	 *
 	 * @param	line	text to compare to property
-	 * @return	returns true if the line is ignorable
+	 * @return	returns <code>true<code> if the line is ignorable
 	 */
 	public static boolean isIgnorableErrorLine(String line) throws Exception {
 		if (isInIgnoreErrorsFile(line, "log")) {
@@ -1177,11 +1180,11 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if the line is in the file defined in property
+	 * Returns <code>true<code> if the line is in the file defined in property
 	 * ignore.errors.file.name
 	 *
 	 * @param	line	text to find in the file
-	 * @return	returns true if the line is in the file
+	 * @return	returns <code>true<code> if the line is in the file
 	 */
 	public static boolean isInIgnoreErrorsFile(String line, String errorType)
 		throws Exception {
@@ -1241,9 +1244,9 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if the mobile device is enabled
+	 * Returns <code>true<code> if the mobile device is enabled
 	 *
-	 * @return	returns true if the mobile device is enabled
+	 * @return	returns <code>true<code> if the mobile device is enabled
 	 */
 	public static boolean isMobileDeviceEnabled() {
 		if (Validator.isNull(PropsValues.MOBILE_DEVICE_TYPE)) {
@@ -1254,11 +1257,11 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if the element is not checked
+	 * Returns <code>true<code> if the element is not checked
 	 *
-	 * @param 	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @return	returns true if the element is not checked
+	 * @param 	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @return	returns <code>true<code> if the element is not checked
 	 */
 	public static boolean isNotChecked(
 		LiferaySelenium liferaySelenium, String locator) {
@@ -1267,13 +1270,14 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if the element does not contain the specified pattern
+	 * Returns <code>true<code> if the element does not contain the specified
+	 * pattern
 	 *
-	 * @param 	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	pattern			pattern to search for in the element text
-	 * @return	returns true if the element does not contain the specified
-	 * 			pattern
+	 * @param 	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
+	 * @return	returns <code>true<code> if the element does not contain the
+	 * 			specified pattern
 	 */
 	public static boolean isNotPartialText(
 		LiferaySelenium liferaySelenium, String locator, String value) {
@@ -1282,13 +1286,14 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if the element text does not match the specified value
+	 * Returns <code>true<code> if the element text does not match the specified
+	 * value
 	 *
-	 * @param 	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	value			text to search for in the element text
-	 * @return	returns true if the element text does not match the specified
-	 * 			value
+	 * @param 	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element text
+	 * @return	returns <code>true<code> if the element text does not match the
+	 * 			specified value
 	 */
 	public static boolean isNotText(
 		LiferaySelenium liferaySelenium, String locator, String value) {
@@ -1297,13 +1302,14 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if the element value does not contain the specified value
+	 * Returns <code>true<code> if the element value does not contain the
+	 * specified value
 	 *
-	 * @param 	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	value			text to search for in the element value
-	 * @return	returns true if the element value does not contain the specified
-	 * 			value
+	 * @param 	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element value
+	 * @return	returns <code>true<code> if the element value does not contain
+	 * 			the specified value
 	 */
 	public static boolean isNotValue(
 		LiferaySelenium liferaySelenium, String locator, String value) {
@@ -1312,11 +1318,11 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if the element is not visible
+	 * Returns <code>true<code> if the element is not visible
 	 *
-	 * @param 	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @return	returns true if the element is not visible
+	 * @param 	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @return	returns <code>true<code> if the element is not visible
 	 */
 	public static boolean isNotVisible(
 		LiferaySelenium liferaySelenium, String locator) {
@@ -1325,11 +1331,11 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if the sikuli image is present
+	 * Returns <code>true<code> if the sikuli image is present
 	 *
-	 * @param	image			location of the image file
-	 * @param 	liferaySelenium	liferaySelenium object
-	 * @return	returns true if the sikuli image is present
+	 * @param	image location of the image file
+	 * @param 	liferaySelenium liferaySelenium object
+	 * @return	returns <code>true<code> if the sikuli image is present
 	 */
 	public static boolean isSikuliImagePresent(
 			LiferaySelenium liferaySelenium, String image)
@@ -1347,21 +1353,22 @@ public class LiferaySeleniumHelper {
 	}
 
 	/**
-	 * Returns true if the TCat is enabled
+	 * Returns <code>true<code> if the TCat is enabled
 	 *
-	 * @return	returns true if the TCat is enabled
+	 * @return	returns <code>true<code> if the TCat is enabled
 	 */
 	public static boolean isTCatEnabled() {
 		return PropsValues.TCAT_ENABLED;
 	}
 
 	/**
-	 * Returns true if the element text does not contain specified pattern
+	 * Returns <code>true<code> if the element text does not contain specified
+	 * pattern
 	 *
-	 * @param 	liferaySelenium	liferaySelenium object
+	 * @param 	liferaySelenium liferaySelenium object
 	 * @param	pattern	pattern to search for in the element text
-	 * @return	returns true if the element text does not contain specified
-	 * 			pattern
+	 * @return	returns <code>true<code> if the element text does not contain
+	 * 			specified pattern
 	 */
 	public static boolean isTextNotPresent(
 		LiferaySelenium liferaySelenium, String pattern) {
@@ -1372,7 +1379,7 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Temporarily stops actions for a specified amount of time
 	 *
-	 * @param	waitTime		time in milliseconds to wait
+	 * @param	waitTime time in milliseconds to wait
 	 */
 	public static void pause(String waitTime) throws Exception {
 		Thread.sleep(GetterUtil.getInteger(waitTime));
@@ -1381,9 +1388,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Sends a reply to a specified recipient with a specified body text
 	 *
-	 * @param	body	text in the body of the email
-	 * @param 	liferaySelenium	liferaySelenium object
-	 * @param	to	email recipient
+	 * @param	body text in the body of the email
+	 * @param 	liferaySelenium liferaySelenium object
+	 * @param	to email recipient
 	 */
 	public static void replyToEmail(
 			LiferaySelenium liferaySelenium, String to, String body)
@@ -1397,7 +1404,7 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Takes a screenshot of the current screen and saves the image
 	 *
-	 * @param 	liferaySelenium	liferaySelenium object
+	 * @param 	liferaySelenium liferaySelenium object
 	 */
 	public static void saveScreenshot(LiferaySelenium liferaySelenium)
 		throws Exception {
@@ -1417,12 +1424,14 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Takes a screenshot of the current screen.
 	 *
-	 * When actionFailed is false, the previously saved image gets overwritten
-	 * by the current image. When actionFailed is true, the image name to be
-	 * saved gets incremented by one resulting in a new file name.
+	 * When actionFailed is <code>false<code>, the previously saved image gets
+	 * overwritten by the current image. When actionFailed is <code>true<code>,
+	 * the image name to be saved gets incremented by one resulting in a new
+	 * file name.
 	 *
-	 * @param	actionFailed	true if the current action caused a failure
-	 * @param 	liferaySelenium	liferaySelenium object
+	 * @param	actionFailed <code>true<code> if the current action caused a
+	 * 			failure
+	 * @param 	liferaySelenium liferaySelenium object
 	 */
 	public static void saveScreenshotBeforeAction(
 			LiferaySelenium liferaySelenium, boolean actionFailed)
@@ -1446,10 +1455,10 @@ public class LiferaySeleniumHelper {
 	 * Sends an email to a specified recipient with a specified subject header
 	 * and body text
 	 *
-	 * @param	body			text in the body of the email
-	 * @param 	liferaySelenium	liferaySelenium object
-	 * @param	to				email recipient
-	 * @param	subject			text in the subject of the email
+	 * @param	body text in the body of the email
+	 * @param 	liferaySelenium liferaySelenium object
+	 * @param	to email recipient
+	 * @param	subject text in the subject of the email
 	 */
 	public static void sendEmail(
 			LiferaySelenium liferaySelenium, String to, String subject,
@@ -1465,8 +1474,8 @@ public class LiferaySeleniumHelper {
 	 * Asserts the element is not present using Sikuli to match the element
 	 * image
 	 *
-	 * @param	image			location of the image file
-	 * @param 	liferaySelenium	liferaySelenium object
+	 * @param	image location of the image file
+	 * @param 	liferaySelenium liferaySelenium object
 	 */
 	public static void sikuliAssertElementNotPresent(
 			LiferaySelenium liferaySelenium, String image)
@@ -1484,8 +1493,8 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Asserts the element is present using Sikuli to match the element image
 	 *
-	 * @param	image			location of the image file
-	 * @param 	liferaySelenium	liferaySelenium object
+	 * @param	image location of the image file
+	 * @param 	liferaySelenium liferaySelenium object
 	 */
 	public static void sikuliAssertElementPresent(
 			LiferaySelenium liferaySelenium, String image)
@@ -1515,8 +1524,8 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Clicks on an element using Sikuli to match the element image
 	 *
-	 * @param	image			location of the image file
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	image location of the image file
+	 * @param	liferaySelenium liferaySelenium object
 	 */
 	public static void sikuliClick(
 			LiferaySelenium liferaySelenium, String image)
@@ -1538,9 +1547,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Clicks on the element at index using Sikuli to match the element image
 	 *
-	 * @param	image			location of the image file
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	index			zero-based index of the element to match
+	 * @param	image location of the image file
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	index zero-based index of the element to match
 	 */
 	public static void sikuliClickByIndex(
 			LiferaySelenium liferaySelenium, String image, String index)
@@ -1567,9 +1576,9 @@ public class LiferaySeleniumHelper {
 	 * Clicks and holds at the location of the element (found by Sikuli image
 	 * search), moves to the specified coordinate, then releases the mouse.
 	 *
-	 * @param	image			location of the image file
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	coordString		location of where to release the element
+	 * @param	image location of the image file
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	coordString location of where to release the element
 	 */
 	public static void sikuliDragAndDrop(
 			LiferaySelenium liferaySelenium, String image, String coordString)
@@ -1610,7 +1619,7 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Left clicks and holds at the current mouse location using Sikuli mouse
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	liferaySelenium liferaySelenium object
 	 */
 	public static void sikuliLeftMouseDown(LiferaySelenium liferaySelenium)
 		throws Exception {
@@ -1625,7 +1634,7 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Releases the previously pressed left click button using Sikuli mouse
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	liferaySelenium liferaySelenium object
 	 */
 	public static void sikuliLeftMouseUp(LiferaySelenium liferaySelenium)
 		throws Exception {
@@ -1640,8 +1649,8 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Moves the mouse to the location of the element found by Sikuli search
 	 *
-	 * @param	image			location of the image file
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	image location of the image file
+	 * @param	liferaySelenium liferaySelenium object
 	 */
 	public static void sikuliMouseMove(
 			LiferaySelenium liferaySelenium, String image)
@@ -1661,7 +1670,7 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Right clicks and holds at the current mouse location using Sikuli mouse
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	liferaySelenium liferaySelenium object
 	 */
 	public static void sikuliRightMouseDown(LiferaySelenium liferaySelenium)
 		throws Exception {
@@ -1676,7 +1685,7 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Releases the previously pressed right click button using Sikuli mouse
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
+	 * @param	liferaySelenium liferaySelenium object
 	 */
 	public static void sikuliRightMouseUp(LiferaySelenium liferaySelenium)
 		throws Exception {
@@ -1691,9 +1700,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Uses Sikuli to find the location of the element and types into it
 	 *
-	 * @param	image			location of the image file
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	value			text to type
+	 * @param	image location of the image file
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	value text to type
 	 */
 	public static void sikuliType(
 			LiferaySelenium liferaySelenium, String image, String value)
@@ -1732,9 +1741,9 @@ public class LiferaySeleniumHelper {
 	 * NOTE: File must be in the dependencies folder. The dependencies folder is
 	 * defined in property test.dependencies.dir.name
 	 *
-	 * @param	image			location of the image file
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	value			file name
+	 * @param	image location of the image file
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	value file name
 	 */
 	public static void sikuliUploadCommonFile(
 			LiferaySelenium liferaySelenium, String image, String value)
@@ -1764,9 +1773,9 @@ public class LiferaySeleniumHelper {
 	 * NOTE: File must be in the TCat folder. The TCat folder is defined in
 	 * property tcat.admin.repository
 	 *
-	 * @param	image			location of the image file
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	value			file name
+	 * @param	image location of the image file
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	value file name
 	 */
 	public static void sikuliUploadTCatFile(
 			LiferaySelenium liferaySelenium, String image, String value)
@@ -1793,9 +1802,9 @@ public class LiferaySeleniumHelper {
 	 * NOTE: The file location must be in the directory defined in property
 	 * output.dir.name.
 	 *
-	 * @param	image			location of the image file
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	value			file name
+	 * @param	image location of the image file
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	value file name
 	 */
 	public static void sikuliUploadTempFile(
 			LiferaySelenium liferaySelenium, String image, String value)
@@ -1827,9 +1836,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Types the value to the specified Ace Editor element
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	value			text to send to the element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	value text to send to the element
 	 */
 	public static void typeAceEditor(
 		LiferaySelenium liferaySelenium, String locator, String value) {
@@ -1870,9 +1879,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Types the value to the specified CK Editor element
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	value			text to send to the element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	value text to send to the element
 	 */
 	public static void typeCKEditor(
 		LiferaySelenium liferaySelenium, String locator, String value) {
@@ -1906,8 +1915,8 @@ public class LiferaySeleniumHelper {
 	 * Waits for the given message in the JavaScript dialog generated during
 	 * the previous action
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	pattern			pattern to search for in the dialog
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	pattern pattern to search for in the dialog
 	 */
 	public static void waitForConfirmation(
 			LiferaySelenium liferaySelenium, String pattern)
@@ -1935,8 +1944,8 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits for the element to not be present
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
 	 */
 	public static void waitForElementNotPresent(
 			LiferaySelenium liferaySelenium, String locator)
@@ -1962,8 +1971,8 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits for the element to be present
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
 	 */
 	public static void waitForElementPresent(
 			LiferaySelenium liferaySelenium, String locator)
@@ -1989,9 +1998,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits the element text to not contain the specified pattern
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	pattern			pattern to search for in the element text
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
 	 */
 	public static void waitForNotPartialText(
 			LiferaySelenium liferaySelenium, String locator, String value)
@@ -2019,9 +2028,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Wait for selection element to not be present
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	pattern			pattern to search for in the element text
-	 * @param	selectLocator	location of the selection element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	pattern pattern to search for in the element text
+	 * @param	selectLocator location of the selection element
 	 */
 	public static void waitForNotSelectedLabel(
 			LiferaySelenium liferaySelenium, String selectLocator,
@@ -2050,9 +2059,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits the element text to not equal the specified pattern
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	pattern			pattern to search for in the element text
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
 	 */
 	public static void waitForNotText(
 			LiferaySelenium liferaySelenium, String locator, String value)
@@ -2080,9 +2089,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits the element value to not equal the specified pattern
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	value			text
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element value
 	 */
 	public static void waitForNotValue(
 			LiferaySelenium liferaySelenium, String locator, String value)
@@ -2110,9 +2119,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits the element to not be visible
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	pattern			pattern to search for in the element text
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
 	 */
 	public static void waitForNotVisible(
 			LiferaySelenium liferaySelenium, String locator)
@@ -2138,9 +2147,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits the element text to contain the specified value
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	pattern			pattern to search for in the element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element
 	 */
 	public static void waitForPartialText(
 			LiferaySelenium liferaySelenium, String locator, String value)
@@ -2168,9 +2177,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits the selection element to be present
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	pattern			pattern to search for in the element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element
 	 */
 	public static void waitForSelectedLabel(
 			LiferaySelenium liferaySelenium, String selectLocator,
@@ -2197,9 +2206,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits the element text to equal the specified value
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	value			text to search for in the element text
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element text
 	 */
 	public static void waitForText(
 			LiferaySelenium liferaySelenium, String locator, String value)
@@ -2227,9 +2236,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits the element text to not be present
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	value			text to search for in the element text
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element text
 	 */
 	public static void waitForTextNotPresent(
 			LiferaySelenium liferaySelenium, String value)
@@ -2257,9 +2266,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits the element text to be present
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	value			text to search for in the element text
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element text
 	 */
 	public static void waitForTextPresent(
 			LiferaySelenium liferaySelenium, String value)
@@ -2287,9 +2296,9 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits the element value to equal the specified value
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
-	 * @param	value			text to search for in the element value
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element value
 	 */
 	public static void waitForValue(
 			LiferaySelenium liferaySelenium, String locator, String value)
@@ -2317,8 +2326,8 @@ public class LiferaySeleniumHelper {
 	/**
 	 * Waits the element text to not be visble
 	 *
-	 * @param	liferaySelenium	liferaySelenium object
-	 * @param	locator			location of the element
+	 * @param	liferaySelenium liferaySelenium object
+	 * @param	locator location of the element
 	 */
 	public static void waitForVisible(
 			LiferaySelenium liferaySelenium, String locator)

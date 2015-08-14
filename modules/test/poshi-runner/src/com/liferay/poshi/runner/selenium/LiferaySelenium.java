@@ -27,8 +27,8 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Executes an ant command with specified file and target names
 	 *
-	 * @param	fileName	name of the file where the target lives
-	 * @param	target	target to call
+	 * @param	fileName name of the file where the target lives
+	 * @param	target target to call
 	 */
 	public void antCommand(String fileName, String target) throws Exception;
 
@@ -47,7 +47,7 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Asserts the element is checked
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void assertChecked(String locator) throws Exception;
 
@@ -55,7 +55,7 @@ public interface LiferaySelenium extends Selenium {
 	 * Asserts the given message matches the JavaScript dialog generated during
 	 * the previous action
 	 *
-	 * @param	pattern	pattern to search for in the dialog
+	 * @param	pattern pattern to search for in the dialog
 	 */
 	public void assertConfirmation(String pattern) throws Exception;
 
@@ -76,28 +76,28 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Asserts the element is editable
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void assertEditable(String locator) throws Exception;
 
 	/**
 	 * Asserts the element is not present
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void assertElementNotPresent(String locator) throws Exception;
 
 	/**
 	 * Asserts the element is present
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void assertElementPresent(String locator) throws Exception;
 
 	/**
 	 * Asserts the email body is the same as the specified body
 	 *
-	 * @param	body	text to match with the email body
+	 * @param	body text to match with the email body
 	 * @param	index	email message number
 	 */
 	public void assertEmailBody(String index, String body) throws Exception;
@@ -106,7 +106,7 @@ public interface LiferaySelenium extends Selenium {
 	 * Asserts the email subject is the same the specified subject
 	 *
 	 * @param	index	email message number
-	 * @param	subject	text to match with the email subject
+	 * @param	subject text to match with the email subject
 	 */
 	public void assertEmailSubject(String index, String subject)
 		throws Exception;
@@ -114,14 +114,14 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Asserts a specified value is not present in the HTML source code
 	 *
-	 * @param	value	text to search for in the HTML source code
+	 * @param	value text to search for in the HTML source code
 	 */
 	public void assertHTMLSourceTextNotPresent(String value) throws Exception;
 
 	/**
 	 * Asserts a specified value is present in the HTML source code
 	 *
-	 * @param	value	text to search for the HTML source code
+	 * @param	value text to search for the HTML source code
 	 */
 	public void assertHTMLSourceTextPresent(String value) throws Exception;
 
@@ -166,14 +166,14 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Asserts the element is not checked
 	 *
-	 * @param	locator	location of the check box element
+	 * @param	locator location of the check box element
 	 */
 	public void assertNotChecked(String locator) throws Exception;
 
 	/**
 	 * Asserts the element is not editable
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void assertNotEditable(String locator) throws Exception;
 
@@ -187,8 +187,8 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Asserts the element text does not contain the specified pattern
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for in the element text
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
 	 */
 	public void assertNotPartialText(String locator, String pattern)
 		throws Exception;
@@ -196,8 +196,8 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Asserts a selected element is not the same as the pattern
 	 *
-	 * @param	pattern			pattern to search for in the selection items
-	 * @param	selectLocator	location of the element
+	 * @param	pattern pattern to search for in the selection items
+	 * @param	selectLocator location of the element
 	 */
 	public void assertNotSelectedLabel(String selectLocator, String pattern)
 		throws Exception;
@@ -205,23 +205,23 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Asserts the element does not contain the specified pattern
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for in the element text
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
 	 */
 	public void assertNotText(String locator, String pattern) throws Exception;
 
 	/**
 	 * Asserts the element does not contain the specified value
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for in the element value
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element value
 	 */
 	public void assertNotValue(String locator, String pattern) throws Exception;
 
 	/**
 	 * Asserts the element is not visible
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void assertNotVisible(String locator) throws Exception;
 
@@ -230,7 +230,7 @@ public interface LiferaySelenium extends Selenium {
 	 * during the previous action and asserts the confirmation contains the
 	 * specified string
 	 *
-	 * @param	pattern	pattern to search for in the confirmation dialog
+	 * @param	pattern pattern to search for in the confirmation dialog
 	 */
 	public void assertPartialConfirmation(String pattern) throws Exception;
 
@@ -238,8 +238,8 @@ public interface LiferaySelenium extends Selenium {
 	 * Retrieves the element text and asserts the text contains the specified
 	 * pattern
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for in the element text
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
 	 */
 	public void assertPartialText(String locator, String pattern)
 		throws Exception;
@@ -247,8 +247,8 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Asserts the selected element is the same as the pattern
 	 *
-	 * @param	pattern			pattern to search for in the selected element
-	 * @param	selectLocator	location of the element
+	 * @param	pattern pattern to search for in the selected element
+	 * @param	selectLocator location of the element
 	 */
 	public void assertSelectedLabel(String selectLocator, String pattern)
 		throws Exception;
@@ -256,44 +256,44 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Asserts the element text does contain the specified pattern
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for in the element text
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
 	 */
 	public void assertText(String locator, String pattern) throws Exception;
 
 	/**
 	 * Asserts the specified pattern is not present
 	 *
-	 * @param	pattern	pattern to search for
+	 * @param	pattern pattern to search for
 	 */
 	public void assertTextNotPresent(String pattern) throws Exception;
 
 	/**
 	 * Asserts the specified pattern is present
 	 *
-	 * @param	pattern	pattern to search for
+	 * @param	pattern pattern to search for
 	 */
 	public void assertTextPresent(String pattern) throws Exception;
 
 	/**
 	 * Asserts the element value is the same as the specified pattern
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for
 	 */
 	public void assertValue(String locator, String pattern) throws Exception;
 
 	/**
 	 * Asserts the element is present and visible
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void assertVisible(String locator) throws Exception;
 
 	/**
 	 * Clicks the element and waits 30 seconds
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void clickAndWait(String locator);
 
@@ -301,17 +301,16 @@ public interface LiferaySelenium extends Selenium {
 	 * Clicks the element and waits 30 seconds
 	 *
 	 * @param	coordString	specifies the x,y position (i.e. - 10,20) of the
-	 * 						mouse event relative to the element returned by the
-	 * 						locator
-	 * @param	locator		location of the element
+	 * 			mouse event relative to the element returned by the locator
+	 * @param	locator location of the element
 	 */
 	public void clickAtAndWait(String locator, String coordString);
 
 	/**
 	 * Connects to gmail via imap with given email address and password
 	 *
-	 * @param	emailAddress		email address
-	 * @param	emailPassword	email password
+	 * @param	emailAddress email address
+	 * @param	emailPassword email password
 	 */
 	public void connectToEmailAccount(String emailAddress, String emailPassword)
 		throws Exception;
@@ -319,14 +318,14 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Retrieves the element text and copies it
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void copyText(String locator);
 
 	/**
 	 * Retrieves the element value and copies it
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void copyValue(String locator);
 
@@ -373,7 +372,7 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Returns the entire body message of an email
 	 *
-	 * @param	index	email number
+	 * @param	index email number
 	 * @return	returns the body message of an email
 	 */
 	public String getEmailBody(String index) throws Exception;
@@ -381,7 +380,7 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Returns the subject of an email
 	 *
-	 * @param	index	email number
+	 * @param	index email number
 	 * @return	returns the subject of an email
 	 */
 	public String getEmailSubject(String index) throws Exception;
@@ -389,7 +388,7 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Returns the first number in an element
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 * @return	returns the first number in an element
 	 */
 	public String getFirstNumber(String locator);
@@ -397,7 +396,7 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Retrieves the first number in an element and increments it by one
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 * @return	returns the first number in an element and increments it by one
 	 */
 	public String getFirstNumberIncrement(String locator);
@@ -405,7 +404,7 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Returns the value decremented by one
 	 *
-	 * @param	value	number
+	 * @param	value number
 	 * @return	returns the value decremented by one
 	 */
 	public String getNumberDecrement(String value);
@@ -413,7 +412,7 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Returns the value incremented by one
 	 *
-	 * @param	value	number
+	 * @param	value number
 	 * @return	returns the value incremented by one
 	 */
 	public String getNumberIncrement(String value);
@@ -459,198 +458,212 @@ public interface LiferaySelenium extends Selenium {
 	public void goBackAndWait();
 
 	/**
-	 * Returns true if the pattern matches the confirmation message
+	 * Returns <code>true<code> if the pattern matches the confirmation message
 	 *
-	 * @param	pattern	pattern to search for in the confirmation message
+	 * @param	pattern pattern to search for in the confirmation message
 	 */
 	public boolean isConfirmation(String pattern);
 
 	/**
-	 * Returns true if an element is present at the specified location
+	 * Returns <code>true<code> if an element is present at the specified
+	 * location
 	 *
-	 * @param	locator	location of the element
-	 * @return	returns true if an element is present at the specified location
+	 * @param	locator location of the element
+	 * @return	returns <code>true<code> if an element is present at the
+	 * 			specified location
 	 */
 	public boolean isElementNotPresent(String locator);
 
 	/**
-	 * Returns true if an element is present at the specified location after a
-	 * wait of up to the time specified in the property timeout.explicit.wait
+	 * Returns <code>true<code> if an element is present at the specified
+	 * location after a wait of up to the time specified in the property
+	 * timeout.explicit.wait
 	 *
-	 * @param	locator	location of the element
-	 * @return	returns true if an element is present after wait
+	 * @param	locator location of the element
+	 * @return	returns <code>true<code> if an element is present after wait
 	 */
 	public boolean isElementPresentAfterWait(String locator) throws Exception;
 
 	/**
-	 * Returns true if the specific value is present in the HTML source code
+	 * Returns <code>true<code> if the specific value is present in the HTML
+	 * source code
 	 *
-	 * @param	value	text to find in the HTML source code
-	 * @return	returns true if the specific value is present in the HTML source
-	 * 			code
+	 * @param	value text to find in the HTML source code
+	 * @return	returns <code>true<code> if the specific value is present in the
+	 * 			HTML source code
 	 */
 	public boolean isHTMLSourceTextPresent(String value) throws Exception;
 
 	/**
-	 * Returns true if the mobile device is enabled
+	 * Returns <code>true<code> if the mobile device is enabled
 	 *
-	 * @return	returns true if the mobile device is enabled
+	 * @return	returns <code>true<code> if the mobile device is enabled
 	 */
 	public boolean isMobileDeviceEnabled();
 
 	/**
-	 * Returns true if the element is not checked
+	 * Returns <code>true<code> if the element is not checked
 	 *
-	 * @param	locator	location of the element
-	 * @return	returns true if the element is not checked
+	 * @param	locator location of the element
+	 * @return	returns <code>true<code> if the element is not checked
 	 */
 	public boolean isNotChecked(String locator);
 
 	/**
-	 * Returns true if the element is not editable
+	 * Returns <code>true<code> if the element is not editable
 	 *
-	 * @param	locator	location of the element
-	 * @return	returns true if the element is not editable
+	 * @param	locator location of the element
+	 * @return	returns <code>true<code> if the element is not editable
 	 */
 	public boolean isNotEditable(String locator);
 
 	/**
-	 * Returns true if the element does not contain the specified pattern
+	 * Returns <code>true<code> if the element does not contain the specified
+	 * pattern
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for in the element text
-	 * @return	returns true if the element does not contain the specified
-	 * 			pattern
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
+	 * @return	returns <code>true<code> if the element does not contain the
+	 * 			specified pattern
 	 */
 	public boolean isNotPartialText(String locator, String value);
 
 	/**
-	 * Returns true if the selected element is not the same as the pattern
+	 * Returns <code>true<code> if the selected element is not the same as the
+	 * pattern
 	 *
-	 * @param	pattern			pattern to search for in the element text
-	 * @param	selectLocator	location of the element
-	 * @return	returns true if the selected element is not the same as the
-	 * 			pattern
+	 * @param	pattern pattern to search for in the element text
+	 * @param	selectLocator location of the element
+	 * @return	returns <code>true<code> if the selected element is not the same
+	 * 			as the pattern
 	 */
 	public boolean isNotSelectedLabel(String selectLocator, String pattern);
 
 	/**
-	 * Returns true if the element text does not match the specified value
+	 * Returns <code>true<code> if the element text does not match the specified
+	 * value
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to search for in the element text
-	 * @return	returns true if the element text does not match the specified
-	 * 			value
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element text
+	 * @return	returns <code>true<code> if the element text does not match the
+	 * 			specified value
 	 */
 	public boolean isNotText(String locator, String value);
 
 	/**
-	 * Returns true if the element value does not contain the specified value
+	 * Returns <code>true<code> if the element value does not contain the
+	 * specified value
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to search for in the element value
-	 * @return	returns true if the element value does not contain the specified
-	 * 			value
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element value
+	 * @return	returns <code>true<code> if the element value does not contain
+	 * 			the specified value
 	 */
 	public boolean isNotValue(String locator, String value);
 
 	/**
-	 * Returns true if the element is not visible
+	 * Returns <code>true<code> if the element is not visible
 	 *
-	 * @param	locator	location of the element
-	 * @return	returns true if the element is not visible
+	 * @param	locator location of the element
+	 * @return	returns <code>true<code> if the element is not visible
 	 */
 	public boolean isNotVisible(String locator);
 
 	/**
-	 * Returns true if the element does not contain the specified pattern
+	 * Returns <code>true<code> if the element does not contain the specified
+	 * pattern
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for in the element text
-	 * @return	returns true if the element does not contain the specified
-	 * 			pattern
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
+	 * @return	returns <code>true<code> if the element does not contain the
+	 * 			specified pattern
 	 */
 	public boolean isPartialText(String locator, String value);
 
 	/**
-	 * Returns true if the selected element is the same as the pattern
+	 * Returns <code>true<code> if the selected element is the same as the
+	 * pattern
 	 *
-	 * @param	pattern			pattern to search for in the element text
-	 * @param	selectLocator	location of the element
-	 * @return	returns true if the selected element is the same as the pattern
+	 * @param	pattern pattern to search for in the element text
+	 * @param	selectLocator location of the element
+	 * @return	returns <code>true<code> if the selected element is the same as
+	 * 			the pattern
 	 */
 	public boolean isSelectedLabel(String selectLocator, String pattern);
 
 	/**
-	 * Returns true if the sikuli image is present
+	 * Returns <code>true<code> if the sikuli image is present
 	 *
-	 * @param	image	location of the image file
-	 * @return	returns true if the sikuli image is present
+	 * @param	image location of the image file
+	 * @return	returns <code>true<code> if the sikuli image is present
 	 */
 	public boolean isSikuliImagePresent(String image) throws Exception;
 
 	/**
-	 * Returns true if the TCat is enabled
+	 * Returns <code>true<code> if the TCat is enabled
 	 *
-	 * @return	returns true if the TCat is enabled
+	 * @return	returns <code>true<code> if the TCat is enabled
 	 */
 	public boolean isTCatEnabled();
 
 	/**
-	 * Returns true if the element text matches the specified value
+	 * Returns <code>true<code> if the element text matches the specified value
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to search for in the element text
-	 * @return	returns true if the element text matches the specified value
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element text
+	 * @return	returns <code>true<code> if the element text matches the
+	 * 			specified value
 	 */
 	public boolean isText(String locator, String value);
 
 	/**
-	 * Returns true if the element text does not contain specified pattern
+	 * Returns <code>true<code> if the element text does not contain specified
+	 * pattern
 	 *
-	 * @param	pattern	pattern to search for in the element text
-	 * @return	returns true if the element text does not contain specified
-	 * 			pattern
+	 * @param	pattern pattern to search for in the element text
+	 * @return	returns <code>true<code> if the element text does not contain
+	 * 			specified pattern
 	 */
 	public boolean isTextNotPresent(String pattern);
 
 	/**
-	 * Returns true if the element value matches the specified value
+	 * Returns <code>true<code> if the element value matches the specified value
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to search for in the element value
-	 * @return	returns true if the element value matches the specified value
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element value
+	 * @return	returns <code>true<code> if the element value matches the
+	 * 			specified value
 	 */
 	public boolean isValue(String locator, String value);
 
 	/**
 	 * Presses and holds the sequence of keys and waits 30 seconds
 	 *
-	 * @param	keySequence	sequence of keys to press
-	 * @param	locator		location of the element
+	 * @param	keySequence sequence of keys to press
+	 * @param	locator location of the element
 	 */
 	public void keyDownAndWait(String locator, String keySequence);
 
 	/**
 	 * Presses sequence of keys and waits 30 seconds
 	 *
-	 * @param	keySequence	sequence of keys to press
-	 * @param	locator		location of the element
+	 * @param	keySequence sequence of keys to press
+	 * @param	locator location of the element
 	 */
 	public void keyPressAndWait(String locator, String keySequence);
 
 	/**
 	 * Releases the sequence of keys and waits 30 seconds
 	 *
-	 * @param	keySequence	sequence of keys to press
-	 * @param	locator		location of the element
+	 * @param	keySequence sequence of keys to press
+	 * @param	locator location of the element
 	 */
 	public void keyUpAndWait(String locator, String keySequence);
 
 	/**
 	 * Injects JavaScript to the page and makes it visible
 	 *
-	 * @param	locator		location of the element
+	 * @param	locator location of the element
 	 */
 	public void makeVisible(String locator);
 
@@ -662,14 +675,14 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Pastes the previously copied text to the specified element
 	 *
-	 * @param	locator		location of the element
+	 * @param	locator location of the element
 	 */
 	public void paste(String locator);
 
 	/**
 	 * Temporarily stops actions for a specified amount of time
 	 *
-	 * @param	waitTime		time in milliseconds to wait
+	 * @param	waitTime time in milliseconds to wait
 	 */
 	public void pause(String waitTime) throws Exception;
 
@@ -684,8 +697,8 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Sends a reply to a specified recipient with a specified body text
 	 *
-	 * @param	body	text in the body of the email
-	 * @param	to		email recipient
+	 * @param	body text in the body of the email
+	 * @param	to email recipient
 	 */
 	public void replyToEmail(String to, String body) throws Exception;
 
@@ -700,11 +713,13 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Takes a screenshot of the current screen.
 	 *
-	 * When actionFailed is false, the previously saved image gets overwritten
-	 * by the current image. When actionFailed is true, the image name to be
-	 * saved gets incremented by one resulting in a new file name.
+	 * When actionFailed is <code>false<code>, the previously saved image gets
+	 * overwritten by the current image. When actionFailed is <code>true<code>,
+	 * the image name to be saved gets incremented by one resulting in a new
+	 * file name.
 	 *
-	 * @param	actionFailed	true if the current action caused a failure
+	 * @param	actionFailed <code>true<code> if the current action caused a
+	 * failure
 	 */
 	public void saveScreenshotBeforeAction(boolean actionFailed)
 		throws Exception;
@@ -712,15 +727,15 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Scroll to where the element is located
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void scrollWebElementIntoView(String locator) throws Exception;
 
 	/**
 	 * Selects the option and waits 30 seconds
 	 *
-	 * @param	selectLocator	location of the selection element
-	 * @param	optionLocator	location of the option to select
+	 * @param	selectLocator location of the selection element
+	 * @param	optionLocator location of the option to select
 	 */
 	public void selectAndWait(String selectLocator, String optionLocator);
 
@@ -734,9 +749,9 @@ public interface LiferaySelenium extends Selenium {
 	 * Sends an email to a specified recipient with a specified subject header
 	 * and body text
 	 *
-	 * @param	body	text in the body of the email
-	 * @param	to		email recipient
-	 * @param	subject	text in the subject of the email
+	 * @param	body text in the body of the email
+	 * @param	to email recipient
+	 * @param	subject text in the subject of the email
 	 */
 	public void sendEmail(String to, String subject, String body)
 		throws Exception;
@@ -744,16 +759,16 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Sends the value to the specified element
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to send to the element
+	 * @param	locator location of the element
+	 * @param	value text to send to the element
 	 */
 	public void sendKeys(String locator, String value);
 
 	/**
 	 * Sends the value to the specified Ace Editor element
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to send to the element
+	 * @param	locator location of the element
+	 * @param	value text to send to the element
 	 */
 	public void sendKeysAceEditor(String locator, String value);
 
@@ -778,7 +793,7 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Sets the primary test suite name
 	 *
-	 * @param	 primaryTestSuiteName	name of the test suite to be set
+	 * @param	 primaryTestSuiteName name of the test suite to be set
 	 */
 	public void setPrimaryTestSuiteName(String primaryTestSuiteName);
 
@@ -788,7 +803,7 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Sets window size to be the specified size
 	 *
-	 * @param	 coordString	size of the window
+	 * @param	 coordString size of the window
 	 */
 	public void setWindowSize(String coordString);
 
@@ -796,29 +811,29 @@ public interface LiferaySelenium extends Selenium {
 	 * Asserts the element is not present using Sikuli to match the element
 	 * image
 	 *
-	 * @param	image	location of the image file
+	 * @param	image location of the image file
 	 */
 	public void sikuliAssertElementNotPresent(String image) throws Exception;
 
 	/**
 	 * Asserts the element is present using Sikuli to match the element image
 	 *
-	 * @param	image	location of the image file
+	 * @param	image location of the image file
 	 */
 	public void sikuliAssertElementPresent(String image) throws Exception;
 
 	/**
 	 * Clicks on an element using Sikuli to match the element image
 	 *
-	 * @param	image	location of the image file
+	 * @param	image location of the image file
 	 */
 	public void sikuliClick(String image) throws Exception;
 
 	/**
 	 * Clicks on the element at index using Sikuli to match the element image
 	 *
-	 * @param	image	location of the image file
-	 * @param	index	zero-based index of the element to match
+	 * @param	image location of the image file
+	 * @param	index zero-based index of the element to match
 	 */
 	public void sikuliClickByIndex(String image, String index) throws Exception;
 
@@ -826,8 +841,8 @@ public interface LiferaySelenium extends Selenium {
 	 * Clicks and holds at the location of the element (found by Sikuli image
 	 * search), moves to the specified coordinate, then releases the mouse.
 	 *
-	 * @param	coordString	location of where to release the element
-	 * @param	image		location of the image file
+	 * @param	coordString location of where to release the element
+	 * @param	image location of the image file
 	 */
 	public void sikuliDragAndDrop(String image, String coordString)
 		throws Exception;
@@ -845,7 +860,7 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Moves the mouse to the location of the element found by Sikuli search
 	 *
-	 * @param	image	location of the image file
+	 * @param	image location of the image file
 	 */
 	public void sikuliMouseMove(String image) throws Exception;
 
@@ -862,8 +877,8 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Uses Sikuli to find the location of the element and types into it
 	 *
-	 * @param	image	location of the image file
-	 * @param	value	text to type
+	 * @param	image location of the image file
+	 * @param	value text to type
 	 */
 	public void sikuliType(String image, String value) throws Exception;
 
@@ -874,8 +889,8 @@ public interface LiferaySelenium extends Selenium {
 	 * NOTE: File must be in the dependencies folder. The dependencies folder is
 	 * defined in property test.dependencies.dir.name
 	 *
-	 * @param	image	location of the image file
-	 * @param	value	file name
+	 * @param	image location of the image file
+	 * @param	value file name
 	 */
 	public void sikuliUploadCommonFile(String image, String value)
 		throws Exception;
@@ -887,8 +902,8 @@ public interface LiferaySelenium extends Selenium {
 	 * NOTE: File must be in the TCat folder. The TCat folder is defined in
 	 * property tcat.admin.repository
 	 *
-	 * @param	image	location of the image file
-	 * @param	value	file name
+	 * @param	image location of the image file
+	 * @param	value file name
 	 */
 	public void sikuliUploadTCatFile(String image, String value)
 		throws Exception;
@@ -900,8 +915,8 @@ public interface LiferaySelenium extends Selenium {
 	 * NOTE: The file location must be in the directory defined in property
 	 * output.dir.name.
 	 *
-	 * @param	image	location of the image file
-	 * @param	value	file name
+	 * @param	image location of the image file
+	 * @param	value file name
 	 */
 	public void sikuliUploadTempFile(String image, String value)
 		throws Exception;
@@ -915,24 +930,24 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Types the value to the specified Ace Editor element
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to send to the element
+	 * @param	locator location of the element
+	 * @param	value text to send to the element
 	 */
 	public void typeAceEditor(String locator, String value);
 
 	/**
 	 * Types the value to the specified Alloy Editor element
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to send to the element
+	 * @param	locator location of the element
+	 * @param	value text to send to the element
 	 */
 	public void typeAlloyEditor(String locator, String value);
 
 	/**
 	 * Types the value to the specified CK Editor element
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to send to the element
+	 * @param	locator location of the element
+	 * @param	value text to send to the element
 	 */
 	public void typeCKEditor(String locator, String value);
 
@@ -945,16 +960,16 @@ public interface LiferaySelenium extends Selenium {
 	 * NOTE: File must be in the dependencies folder. The dependencies folder is
 	 * defined in property test.dependencies.dir.name
 	 *
-	 * @param	image	location of the image file
-	 * @param	value	file name
+	 * @param	image location of the image file
+	 * @param	value file name
 	 */
 	public void uploadCommonFile(String locator, String value);
 
 	/**
 	 * Clicks on the element and types path of the file to upload.
 	 *
-	 * @param	image	location of the image file
-	 * @param	value	canonical path of the file
+	 * @param	image location of the image file
+	 * @param	value canonical path of the file
 	 */
 	public void uploadFile(String locator, String value);
 
@@ -964,8 +979,8 @@ public interface LiferaySelenium extends Selenium {
 	 * NOTE: The file location must be in the directory defined in property
 	 * output.dir.name.
 	 *
-	 * @param	image	location of the image file
-	 * @param	value	file name
+	 * @param	image location of the image file
+	 * @param	value file name
 	 */
 	public void uploadTempFile(String locator, String value);
 
@@ -973,29 +988,29 @@ public interface LiferaySelenium extends Selenium {
 	 * Waits for the given message in the JavaScript dialog generated during
 	 * the previous action
 	 *
-	 * @param	pattern	pattern to search for in the dialog
+	 * @param	pattern pattern to search for in the dialog
 	 */
 	public void waitForConfirmation(String pattern) throws Exception;
 
 	/**
 	 * Waits for the element to not be present
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void waitForElementNotPresent(String locator) throws Exception;
 
 	/**
 	 * Waits for the element to be present
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void waitForElementPresent(String locator) throws Exception;
 
 	/**
 	 * Waits the element text to not contain the specified pattern
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for in the element text
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
 	 */
 	public void waitForNotPartialText(String locator, String value)
 		throws Exception;
@@ -1003,8 +1018,8 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Wait for selection element to not be present
 	 *
-	 * @param	pattern			pattern to search for in the element text
-	 * @param	selectLocator	location of the selection element
+	 * @param	pattern pattern to search for in the element text
+	 * @param	selectLocator location of the selection element
 	 */
 	public void waitForNotSelectedLabel(String selectLocator, String pattern)
 		throws Exception;
@@ -1012,32 +1027,32 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Waits the element text to not equal the specified pattern
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for in the element text
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
 	 */
 	public void waitForNotText(String locator, String value) throws Exception;
 
 	/**
 	 * Waits the element value to not equal the specified pattern
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text
+	 * @param	locator location of the element
+	 * @param	value text
 	 */
 	public void waitForNotValue(String locator, String value) throws Exception;
 
 	/**
 	 * Waits the element to not be visible
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for in the element text
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element text
 	 */
 	public void waitForNotVisible(String locator) throws Exception;
 
 	/**
 	 * Waits the element text to contain the specified value
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for in the element
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element
 	 */
 	public void waitForPartialText(String locator, String value)
 		throws Exception;
@@ -1045,8 +1060,8 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Waits the selection element to be present
 	 *
-	 * @param	locator	location of the element
-	 * @param	pattern	pattern to search for in the element
+	 * @param	locator location of the element
+	 * @param	pattern pattern to search for in the element
 	 */
 	public void waitForSelectedLabel(String selectLocator, String pattern)
 		throws Exception;
@@ -1054,39 +1069,39 @@ public interface LiferaySelenium extends Selenium {
 	/**
 	 * Waits the element text to equal the specified value
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to search for in the element text
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element text
 	 */
 	public void waitForText(String locator, String value) throws Exception;
 
 	/**
 	 * Waits the element text to not be present
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to search for in the element text
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element text
 	 */
 	public void waitForTextNotPresent(String value) throws Exception;
 
 	/**
 	 * Waits the element text to be present
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to search for in the element text
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element text
 	 */
 	public void waitForTextPresent(String value) throws Exception;
 
 	/**
 	 * Waits the element value to equal the specified value
 	 *
-	 * @param	locator	location of the element
-	 * @param	value	text to search for in the element value
+	 * @param	locator location of the element
+	 * @param	value text to search for in the element value
 	 */
 	public void waitForValue(String locator, String value) throws Exception;
 
 	/**
 	 * Waits the element text to not be visble
 	 *
-	 * @param	locator	location of the element
+	 * @param	locator location of the element
 	 */
 	public void waitForVisible(String locator) throws Exception;
 
