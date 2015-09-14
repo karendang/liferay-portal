@@ -121,7 +121,7 @@ if (editorOptions != null) {
 			};
 
 			CKEDITOR.getNextZIndex = function() {
-				return CKEDITOR.dialog._.currentZIndex ? CKEDITOR.dialog._.currentZIndex + 10 : Liferay.zIndex.OVERLAY;
+				return CKEDITOR.dialog._.currentZIndex ? CKEDITOR.dialog._.currentZIndex + 10 : Liferay.zIndex.WINDOW + 10;
 			};
 		</script>
 	</liferay-util:html-top>
@@ -270,9 +270,27 @@ if (inlineEdit && Validator.isNotNull(inlineEditSaveURL)) {
 		</c:if>
 
 		setHTML: function(value) {
-			CKEDITOR.instances['<%= name %>'].setData(value);
+			var ckEditorInstance = CKEDITOR.instances['<%= name %>'];
 
-			window['<%= name %>']._setStyles();
+			var win = window['<%= name %>'];
+
+			var setHTML = function(data) {
+				ckEditorInstance.setData(data);
+
+				win._setStyles();
+			};
+
+			if (win.instanceReady) {
+				setHTML(value);
+			}
+			else {
+				ckEditorInstance.on(
+					'instanceReady',
+					function() {
+						setHTML(value);
+					}
+				);
+			}
 		}
 	};
 
@@ -428,7 +446,7 @@ if (inlineEdit && Validator.isNotNull(inlineEditSaveURL)) {
 
 		<liferay-util:dynamic-include key='<%= "com.liferay.frontend.editors.web#" + editorName + "#onEditorCreate" %>' />
 
-		<c:if test="<%= inlineEdit && (Validator.isNotNull(inlineEditSaveURL)) %>">
+		<c:if test="<%= inlineEdit && Validator.isNotNull(inlineEditSaveURL) %>">
 			inlineEditor = new Liferay.CKEditorInline(
 				{
 					editor: ckEditor,
@@ -539,7 +557,7 @@ if (inlineEdit && Validator.isNotNull(inlineEditSaveURL)) {
 	};
 
 	<%
-	String toogleControlsStatus = GetterUtil.getString(SessionClicks.get(request, "liferay_toggle_controls", "visible"));
+	String toogleControlsStatus = GetterUtil.getString(SessionClicks.get(request, "com.liferay.frontend.js.web_toggleControls", "visible"));
 	%>
 
 	<c:if test='<%= autoCreate && ((inlineEdit && toogleControlsStatus.equals("visible")) || !inlineEdit) %>'>

@@ -20,11 +20,15 @@ import com.liferay.dynamic.data.mapping.exception.StructureDefinitionException;
 import com.liferay.dynamic.data.mapping.exception.StructureDuplicateElementException;
 import com.liferay.dynamic.data.mapping.exception.StructureDuplicateStructureKeyException;
 import com.liferay.dynamic.data.mapping.exception.StructureNameException;
+import com.liferay.dynamic.data.mapping.model.DDMForm;
+import com.liferay.dynamic.data.mapping.model.DDMFormField;
 import com.liferay.dynamic.data.mapping.model.DDMStructure;
 import com.liferay.dynamic.data.mapping.model.DDMStructureConstants;
 import com.liferay.dynamic.data.mapping.model.DDMTemplate;
 import com.liferay.dynamic.data.mapping.service.DDMStructureLocalServiceUtil;
 import com.liferay.dynamic.data.mapping.storage.StorageType;
+import com.liferay.dynamic.data.mapping.test.util.DDMFormTestUtil;
+import com.liferay.dynamic.data.mapping.util.DDMUtil;
 import com.liferay.dynamic.data.mapping.util.comparator.StructureIdComparator;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.test.rule.AggregateTestRule;
@@ -33,10 +37,12 @@ import com.liferay.portal.kernel.test.util.ServiceContextTestUtil;
 import com.liferay.portal.kernel.test.util.TestPropsValues;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.portal.test.rule.LiferayIntegrationTestRule;
 import com.liferay.portal.util.PortalUtil;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -235,6 +241,69 @@ public class DDMStructureServiceTest extends BaseDDMServiceTestCase {
 	}
 
 	@Test
+	public void testGetFullHierarchyDDMFormFieldsMap() throws Exception {
+		DDMForm parentDDMForm = DDMFormTestUtil.createDDMForm();
+
+		DDMFormField nameDDMFormField = DDMFormTestUtil.createTextDDMFormField(
+			"Name", true, false, false);
+
+		nameDDMFormField.addNestedDDMFormField(
+			DDMFormTestUtil.createTextDDMFormField("Age", true, false, false));
+
+		parentDDMForm.addDDMFormField(nameDDMFormField);
+
+		DDMStructure parentStructure = ddmStructureTestHelper.addStructure(
+			parentDDMForm, StorageType.JSON.toString());
+
+		DDMForm childDDMForm = DDMFormTestUtil.createDDMForm();
+
+		DDMFormField descriptionDDMFormField =
+			DDMFormTestUtil.createTextDDMFormField(
+				"Description", true, false, false);
+
+		childDDMForm.addDDMFormField(descriptionDDMFormField);
+
+		DDMStructure childStructure = ddmStructureTestHelper.addStructure(
+			parentStructure.getStructureId(), parentStructure.getClassNameId(),
+			null, "Child Structure", StringPool.BLANK, childDDMForm,
+			DDMUtil.getDefaultDDMFormLayout(childDDMForm),
+			StorageType.JSON.toString(), DDMStructureConstants.TYPE_DEFAULT);
+
+		Map<String, DDMFormField> childFullHierarchyDDMFormFieldsMap =
+			childStructure.getFullHierarchyDDMFormFieldsMap(true);
+
+		Assert.assertTrue(
+			childFullHierarchyDDMFormFieldsMap.containsKey("Name"));
+		Assert.assertTrue(
+			childFullHierarchyDDMFormFieldsMap.containsKey("Age"));
+		Assert.assertTrue(
+			childFullHierarchyDDMFormFieldsMap.containsKey("Description"));
+
+		// Update parent DDM form to have just the Name field
+
+		DDMForm parentDDMFormUpdated = DDMFormTestUtil.createDDMForm();
+
+		parentDDMFormUpdated.addDDMFormField(nameDDMFormField);
+
+		parentStructure.setDDMForm(parentDDMFormUpdated);
+
+		DDMStructureLocalServiceUtil.updateDDMStructure(parentStructure);
+
+		// Assert that the child DDM form has the full hierarchy updated
+
+		childStructure = DDMStructureLocalServiceUtil.getStructure(
+			childStructure.getStructureId());
+
+		childFullHierarchyDDMFormFieldsMap =
+			childStructure.getFullHierarchyDDMFormFieldsMap(true);
+
+		Assert.assertTrue(
+			childFullHierarchyDDMFormFieldsMap.containsKey("Name"));
+		Assert.assertTrue(
+			childFullHierarchyDDMFormFieldsMap.containsKey("Description"));
+	}
+
+	@Test
 	public void testGetStructures() throws Exception {
 		DDMStructure structure = addStructure(_CLASS_NAME_ID, "Test Structure");
 
@@ -257,6 +326,29 @@ public class DDMStructureServiceTest extends BaseDDMServiceTestCase {
 	}
 
 	@Test
+	public void testSearchByAnyStatus() throws Exception {
+		addStructure(
+			0, _CLASS_NAME_ID, null, StringUtil.randomString(),
+			StringPool.BLANK, read("test-structure.xsd"),
+			StorageType.JSON.getValue(), DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_APPROVED);
+
+		addStructure(
+			0, _CLASS_NAME_ID, null, StringUtil.randomString(),
+			StringPool.BLANK, read("test-structure.xsd"),
+			StorageType.JSON.getValue(), DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_DRAFT);
+
+		List<DDMStructure> structures = DDMStructureLocalServiceUtil.search(
+			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
+			_CLASS_NAME_ID, null, null, null,
+			DDMStructureConstants.TYPE_DEFAULT, WorkflowConstants.STATUS_ANY,
+			true, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+
+		Assert.assertEquals(2, structures.size());
+	}
+
+	@Test
 	public void testSearchByClassNameId() throws Exception {
 		addStructure(_CLASS_NAME_ID, StringUtil.randomString());
 		addStructure(_CLASS_NAME_ID, StringUtil.randomString());
@@ -265,7 +357,8 @@ public class DDMStructureServiceTest extends BaseDDMServiceTestCase {
 		List<DDMStructure> structures = DDMStructureLocalServiceUtil.search(
 			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
 			_CLASS_NAME_ID, null, null, null,
-			DDMStructureConstants.TYPE_DEFAULT, true, QueryUtil.ALL_POS,
+			DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_APPROVED, true, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, null);
 
 		Assert.assertEquals(3, structures.size());
@@ -279,13 +372,37 @@ public class DDMStructureServiceTest extends BaseDDMServiceTestCase {
 		List<DDMStructure> structures = DDMStructureLocalServiceUtil.search(
 			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
 			_CLASS_NAME_ID, null, "Contact", null,
-			DDMStructureConstants.TYPE_DEFAULT, true, QueryUtil.ALL_POS,
+			DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_APPROVED, true, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, null);
 
 		DDMStructure structure = structures.get(0);
 
 		Assert.assertEquals(
 			"Contact", structure.getDescription(group.getDefaultLanguageId()));
+	}
+
+	@Test
+	public void testSearchByDraftStatus() throws Exception {
+		addStructure(
+			0, _CLASS_NAME_ID, null, StringUtil.randomString(),
+			StringPool.BLANK, read("test-structure.xsd"),
+			StorageType.JSON.getValue(), DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_APPROVED);
+
+		addStructure(
+			0, _CLASS_NAME_ID, null, StringUtil.randomString(),
+			StringPool.BLANK, read("test-structure.xsd"),
+			StorageType.JSON.getValue(), DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_DRAFT);
+
+		List<DDMStructure> structures = DDMStructureLocalServiceUtil.search(
+			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
+			_CLASS_NAME_ID, null, null, null,
+			DDMStructureConstants.TYPE_DEFAULT, WorkflowConstants.STATUS_DRAFT,
+			true, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+
+		Assert.assertEquals(1, structures.size());
 	}
 
 	@Test
@@ -296,7 +413,8 @@ public class DDMStructureServiceTest extends BaseDDMServiceTestCase {
 
 		List<DDMStructure> structures = DDMStructureLocalServiceUtil.search(
 			structure.getCompanyId(), new long[] {structure.getGroupId()},
-			structure.getClassNameId(), "Event", QueryUtil.ALL_POS,
+			structure.getClassNameId(), "Event",
+			WorkflowConstants.STATUS_APPROVED, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, new StructureIdComparator(true));
 
 		Assert.assertEquals("Events", getStructureName(structures.get(0)));
@@ -311,7 +429,8 @@ public class DDMStructureServiceTest extends BaseDDMServiceTestCase {
 		List<DDMStructure> structures = DDMStructureLocalServiceUtil.search(
 			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
 			_CLASS_NAME_ID, "Contact", null, null,
-			DDMStructureConstants.TYPE_DEFAULT, true, QueryUtil.ALL_POS,
+			DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_APPROVED, true, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, null);
 
 		Assert.assertEquals("Contact", getStructureName(structures.get(0)));
@@ -325,7 +444,8 @@ public class DDMStructureServiceTest extends BaseDDMServiceTestCase {
 		List<DDMStructure> structures = DDMStructureLocalServiceUtil.search(
 			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
 			_CLASS_NAME_ID, "Contact", "Event", null,
-			DDMStructureConstants.TYPE_DEFAULT, true, QueryUtil.ALL_POS,
+			DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_APPROVED, true, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, null);
 
 		Assert.assertEquals(0, structures.size());
@@ -339,7 +459,8 @@ public class DDMStructureServiceTest extends BaseDDMServiceTestCase {
 		List<DDMStructure> structures = DDMStructureLocalServiceUtil.search(
 			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
 			_CLASS_NAME_ID, "Contact", "Event", null,
-			DDMStructureConstants.TYPE_DEFAULT, false, QueryUtil.ALL_POS,
+			DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_APPROVED, false, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, new StructureIdComparator(true));
 
 		Assert.assertEquals("Contact", getStructureName(structures.get(0)));
@@ -353,7 +474,8 @@ public class DDMStructureServiceTest extends BaseDDMServiceTestCase {
 		List<DDMStructure> structures = DDMStructureLocalServiceUtil.search(
 			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
 			_CLASS_NAME_ID, null, null, "NonExistingStorageType",
-			DDMStructureConstants.TYPE_DEFAULT, true, QueryUtil.ALL_POS,
+			DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_APPROVED, true, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, null);
 
 		Assert.assertEquals(0, structures.size());
@@ -366,7 +488,8 @@ public class DDMStructureServiceTest extends BaseDDMServiceTestCase {
 		List<DDMStructure> structures = DDMStructureLocalServiceUtil.search(
 			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
 			_CLASS_NAME_ID, null, null, StorageType.JSON.toString(),
-			DDMStructureConstants.TYPE_DEFAULT, true, QueryUtil.ALL_POS,
+			DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_APPROVED, true, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, null);
 
 		Assert.assertEquals(1, structures.size());
@@ -377,14 +500,16 @@ public class DDMStructureServiceTest extends BaseDDMServiceTestCase {
 		int initialCount = DDMStructureLocalServiceUtil.searchCount(
 			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
 			_CLASS_NAME_ID, "Test Structure", null, null,
-			DDMStructureConstants.TYPE_DEFAULT, false);
+			DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_APPROVED, false);
 
 		addStructure(_CLASS_NAME_ID, "Test Structure");
 
 		int count = DDMStructureLocalServiceUtil.searchCount(
 			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
 			_CLASS_NAME_ID, "Test Structure", null, null,
-			DDMStructureConstants.TYPE_DEFAULT, false);
+			DDMStructureConstants.TYPE_DEFAULT,
+			WorkflowConstants.STATUS_APPROVED, false);
 
 		Assert.assertEquals(initialCount + 1, count);
 	}
@@ -393,13 +518,13 @@ public class DDMStructureServiceTest extends BaseDDMServiceTestCase {
 	public void testSearchCountByKeywords() throws Exception {
 		int initialCount = DDMStructureLocalServiceUtil.searchCount(
 			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
-			_CLASS_NAME_ID, null);
+			_CLASS_NAME_ID, null, WorkflowConstants.STATUS_APPROVED);
 
 		addStructure(_CLASS_NAME_ID, "Test Structure");
 
 		int count = DDMStructureLocalServiceUtil.searchCount(
 			TestPropsValues.getCompanyId(), new long[] {group.getGroupId()},
-			_CLASS_NAME_ID, null);
+			_CLASS_NAME_ID, null, WorkflowConstants.STATUS_APPROVED);
 
 		Assert.assertEquals(initialCount + 1, count);
 	}

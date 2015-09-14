@@ -44,7 +44,7 @@ public interface DDMDisplay {
 	public String getEditTemplateBackURL(
 			LiferayPortletRequest liferayPortletRequest,
 			LiferayPortletResponse liferayPortletResponse, long classNameId,
-			long classPK, String portletResource)
+			long classPK, long resourceClassNameId, String portletResource)
 		throws Exception;
 
 	public String getEditTemplateTitle(
@@ -104,5 +104,7 @@ public interface DDMDisplay {
 	public boolean isShowAddStructureButton();
 
 	public boolean isShowStructureSelector();
+
+	public boolean isVersioningEnabled();
 
 }

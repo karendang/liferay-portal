@@ -213,7 +213,7 @@ public class JournalConverterUtilTest {
 		fields.put(multiListField);
 
 		Field fieldsDisplayField = getFieldsDisplayField(
-			_ddmStructure.getStructureId(), "multi-list_INSTANCE_9X5wVsSv");
+			_ddmStructure.getStructureId(), "multi_list_INSTANCE_9X5wVsSv");
 
 		fields.put(fieldsDisplayField);
 
@@ -360,8 +360,7 @@ public class JournalConverterUtilTest {
 			TestPropsValues.getUserId(), _group.getGroupId(),
 			DLFolderConstants.DEFAULT_PARENT_FOLDER_ID, "Test 1.txt",
 			ContentTypes.TEXT_PLAIN,
-			RandomTestUtil.randomBytes(
-				TikaSafeRandomizerBumper.TEXT_PLAIN_INSTANCE),
+			RandomTestUtil.randomBytes(TikaSafeRandomizerBumper.INSTANCE),
 			serviceContext);
 
 		Field documentLibraryField = getDocumentLibraryField(
@@ -473,7 +472,7 @@ public class JournalConverterUtilTest {
 		expectedFields.put(multiListField);
 
 		Field fieldsDisplayField = getFieldsDisplayField(
-			_ddmStructure.getStructureId(), "multi-list_INSTANCE_9X5wVsSv");
+			_ddmStructure.getStructureId(), "multi_list_INSTANCE_9X5wVsSv");
 
 		expectedFields.put(fieldsDisplayField);
 
@@ -748,7 +747,7 @@ public class JournalConverterUtilTest {
 		Field field = new Field();
 
 		field.setDDMStructureId(ddmStructureId);
-		field.setName("multi-list");
+		field.setName("multi_list");
 
 		field.addValue(_enLocale, "[\"a\"]");
 
